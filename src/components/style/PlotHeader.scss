@@ -1,0 +1,23 @@
+.PerformrRunnerResultGraph .PlotHeader {
+    > .scroller {
+        overflow: hidden;
+
+        > .scrollArea {
+            // width set by script
+
+            > .gridLabels {
+                position: relative;
+                height: 20px;
+
+                > span {
+                    position: absolute;
+                    top: 0;
+                    // left set by script
+                    width: 2em;
+                    margin-left: -1em;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+@import "./defaultTheme.scss";
+
+.PerformrRunnerResultGraph {
+    .EventPlotItem {
+        position: relative;
+
+        > .plotWrap {
+            height: $PerformrRunnerResultGraph_eventPlotHeight;
+
+            > .plot {
+                position: absolute;
+                top: 1px;
+                height: $PerformrRunnerResultGraph_eventPlotHeight - 2px;
+                // left and width are set by script
+                background: $PerformrRunnerResultGraph_eventPlotColor;
+
+                > .time {
+                    position: absolute;
+                    top: 0;
+                    left: 100%;
+                    margin-left: 5px;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        > .children {
+            display: none;
+        }
+
+        &.expanded > .children {
+            display: block;
+        }
+
+        &.selected > .plotWrap {
+            background-color: $PerformrRunnerResultGraph_eventPlotSelectedColor;
+        }
+    }
+
+    .EventPlotItem .EventPlotItem > .plotWrap > .plot {
+        background: lighten($PerformrRunnerResultGraph_eventPlotColor, 25%);
+    }
+
+    .EventPlotItem .EventPlotItem .EventPlotItem > .plotWrap > .plot {
+        background: lighten($PerformrRunnerResultGraph_eventPlotColor, 50%);
+    }
+
+    .EventPlotItem .EventPlotItem .EventPlotItem .EventPlotItem > .plotWrap > .plot {
+        background: lighten($PerformrRunnerResultGraph_eventPlotColor, 75%);
+    }
+}

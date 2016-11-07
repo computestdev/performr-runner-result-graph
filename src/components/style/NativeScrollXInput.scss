@@ -1,0 +1,10 @@
+.PerformrRunnerResultGraph .NativeScrollXInput {
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    > .scrollArea {
+        // width set by script
+        height: 1px;
+        pointer-events: none;
+    }
+}

@@ -1,0 +1,8 @@
+/node_modules
+/performr-runner-result-graph.iml
+/.idea
+/PRIV
+*.xpi
+/test-bundle.js
+/test-bundle.js.map
+npm-debug.log

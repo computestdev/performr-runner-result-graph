@@ -1,0 +1,62 @@
+@import "./defaultTheme";
+
+.PerformrRunnerResultGraph .ResultGraph {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    > .GraphHeader {
+        flex: 0 0 auto;
+    }
+
+    > .eventPlot {
+        position: relative;
+        flex: 2;
+
+        > .scroller {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            overflow-x: hidden;
+            overflow-y: scroll;
+
+            > .scrollArea {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                background: repeating-linear-gradient(
+                    180deg,
+                    transparent 0,
+                    transparent #{$PerformrRunnerResultGraph_eventPlotHeight},
+                    lightgrey #{$PerformrRunnerResultGraph_eventPlotHeight},
+                    lightgrey #{$PerformrRunnerResultGraph_eventPlotHeight * 2}
+                );
+
+                > .EventTreeColumn {
+                    width: $PerformrRunnerResultGraph_leftColumnWidth;
+                    flex: 0 0 auto;
+                }
+
+                > .EventPlotColumn {
+                    width: calc(100% - #{$PerformrRunnerResultGraph_leftColumnWidth});
+                    flex: 0 0 auto;
+                }
+            }
+        }
+
+        > .NativeScrollXInput {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    > .EventDetails {
+        height: 200px;
+        overflow: auto;
+    }
+}

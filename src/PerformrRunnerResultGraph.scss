@@ -1,0 +1,9 @@
+.PerformrRunnerResultGraph {
+    position: relative;
+    min-width: 500px;
+    min-height: 500px;
+
+    > .ResultGraph {
+        height: 100%;
+    }
+}

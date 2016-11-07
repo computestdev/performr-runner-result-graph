@@ -1,0 +1,67 @@
+@import "./defaultTheme.scss";
+
+.PerformrRunnerResultGraph .EventTreeItem {
+    > .title {
+        height: $PerformrRunnerResultGraph_eventPlotHeight;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        cursor: pointer;
+
+        > .expandButton {
+            width: 20px;
+            height: $PerformrRunnerResultGraph_eventPlotHeight;
+            display: inline-flex;
+            justify-content: center;
+
+            &:after {
+                content: "\a0";
+                display: inline-block;
+                line-height: 1;
+                font-size: 18px;
+                font-family: Courier, "Courier New", monospace;
+            }
+
+            &:focus {
+                box-shadow: inset 0 0 10px #74afec;
+                outline: none;
+            }
+        }
+
+        > .titleText {
+            vertical-align: middle;
+            line-height: 1;
+        }
+    }
+
+    > .children {
+        display: none;
+        padding-left: 25px;
+    }
+
+    &.hasChildren > .title {
+        > .expandButton {
+            cursor: crosshair;
+
+            &:after {
+                content: "+";
+            }
+        }
+    }
+
+    &.expanded > .children {
+        display: block;
+    }
+
+    &.expanded > .title {
+        > .expandButton {
+            &:after {
+                content: "-";
+            }
+        }
+    }
+
+    &.selected > .title {
+        background-color: $PerformrRunnerResultGraph_eventPlotSelectedColor;
+    }
+}

@@ -1,0 +1,15 @@
+.PerformrRunnerResultGraph .CloseButton {
+    background: transparent;
+    border: none;
+    color: blue;
+    cursor: pointer;
+    padding: 3px 6px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:after {
+        content: ' x';
+    }
+}

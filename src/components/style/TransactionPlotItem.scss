@@ -1,0 +1,37 @@
+@import "./defaultTheme";
+
+.PerformrRunnerResultGraph .TransactionPlotItem {
+    position: relative;
+    pointer-events: none;
+
+    > .plotWrap {
+        height: $PerformrRunnerResultGraph_transactionPlotHeight;
+
+        > .plot {
+            pointer-events: auto;
+            position: absolute;
+            top: 1px;
+            height: $PerformrRunnerResultGraph_transactionPlotHeight - 2px;
+            // left and width are set by script
+            background: $PerformrRunnerResultGraph_transactionPlotColorOdd;
+            text-align: center;
+            cursor: pointer;
+
+            > .title {
+                font-weight: bold;
+
+                &:after {
+                    content: ": ";
+                }
+            }
+
+            > .time {
+
+            }
+        }
+    }
+
+    &:nth-child(even) > .plotWrap > .plot {
+        background: $PerformrRunnerResultGraph_transactionPlotColorEven;
+    }
+}

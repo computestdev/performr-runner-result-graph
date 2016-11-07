@@ -1,0 +1,25 @@
+.PerformrRunnerResultGraph .EventMetaDataTable {
+    > table {
+        display: block;
+
+        > tbody {
+            > tr {
+                > th {
+                    text-align: left;
+                    vertical-align: top;
+                }
+
+                > td {
+                    font-family: monospace;
+                    vertical-align: top;
+                    word-break: break-all;
+                    white-space: pre-wrap;
+
+                    > .line {
+                        text-indent: 3em hanging;
+                    }
+                }
+            }
+        }
+    }
+}

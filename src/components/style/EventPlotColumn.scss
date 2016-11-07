@@ -1,0 +1,33 @@
+.PerformrRunnerResultGraph .EventPlotColumn {
+    > .scroller {
+        overflow-x: scroll;
+        overflow-y: hidden;
+
+        > .scrollArea {
+            position: relative;
+            overflow: hidden;
+
+            > .selectedTransactionIndicator > .left {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                // right set by script
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+            > .selectedTransactionIndicator > .right {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                // left set by script
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+            > .EventPlot {
+                position: relative;
+            }
+        }
+    }
+}

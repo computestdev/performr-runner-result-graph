@@ -1,0 +1,41 @@
+@import "./defaultTheme.scss";
+
+.PerformrRunnerResultGraph .EventDetails {
+    position: relative;
+
+    > .CloseButton {
+        float: right;
+    }
+
+    > .title {
+        font-weight: bold;
+        word-break: break-all;
+    }
+
+    > .comment {
+        font-style: italic;
+        word-break: break-all;
+    }
+
+    > .meta {
+        margin: 1em 0;
+        display: flex;
+        flex-direction: row;
+        border-top: 1px solid #777777;
+
+        $padding: 10px;
+
+        > .EventTimingTable {
+            width: $PerformrRunnerResultGraph_leftColumnWidth - $padding * 2 - 1px;
+            padding: $padding;
+            flex: 0 0 auto;
+            border-right: 1px solid #777777;
+        }
+
+        > .EventMetaDataTable {
+            padding: $padding;
+            width: calc(100% - #{$PerformrRunnerResultGraph_leftColumnWidth} - #{$padding * 2});
+            flex: 0 0 auto;
+        }
+    }
+}
