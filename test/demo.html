@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../node_modules/react/dist/react.js"></script>
+        <script src="../node_modules/react-dom/dist/react-dom.js"></script>
+        <script src="../bundle.js"></script>
+        <style>
+            #upload {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+            #demo-container > .PerformrRunnerResultGraph {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <input id="upload" type="file"/>
+        <div id="demo-container"></div>
+        <script>
+            const render = resultObject => {
+                window.currentResultObject = PerformrRunnerResultGraph.default.parseResultObject(resultObject);
+                window.currentResultGraph = React.createElement(PerformrRunnerResultGraph.default, {resultObject: window.currentResultObject})
+                ReactDOM.render(
+                    window.currentResultGraph,
+                    document.querySelector('#demo-container')
+                );
+            };
+
+            document.querySelector('#upload').addEventListener('change', e => {
+                const {files} = e.target;
+
+                if (!files.length) {
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const resultObject = JSON.parse(reader.result);
+                    render(resultObject);
+                };
+                reader.readAsText(files[0]);
+            });
+        </script>
+    </body>
+</html>
