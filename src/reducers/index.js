@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 
 import expandedEvents from './expandedEvents';
 import selectedEvent from './selectedEvent';

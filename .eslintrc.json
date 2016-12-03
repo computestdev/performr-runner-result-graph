@@ -210,6 +210,10 @@
         "no-var": "error",
         "no-void": "error",
         "no-with": "error",
+        "object-curly-spacing": [
+            "error",
+            "never"
+        ],
         "one-var": [
             "error",
             "never"
