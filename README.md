@@ -11,12 +11,12 @@ If you are integrating this React App in your own React App, you can simply impo
 
 ```javascript
 import React, {Component} from 'react';
-import PerformrRunnerResultGraph from 'performr-runner-result-graph';
+import PerformrRunnerResultGraph, {parseResultObject} from 'performr-runner-result-graph';
 import SubApp from './subapp';
 import sampleResult from './sample-result.json';
 
 // Converts your plain-old-javascript-object to an Immutable.js Map and also adds extra lookup tables
-const parsedSampleResult = PerformrRunnerResultGraph.parseResultObject(sampleResult);
+const parsedSampleResult = parseResultObject(sampleResult);
 
 class BigApp extends Component {
   render() {
@@ -51,7 +51,7 @@ This package contains a webpack [UMD](https://github.com/forbeslindesay/umd#umd)
     <div id="demo-container"></div>
     <script>
       const render = resultObject => {
-        window.currentResultObject = PerformrRunnerResultGraph.default.parseResultObject(resultObject);
+        window.currentResultObject = PerformrRunnerResultGraph.parseResultObject(resultObject);
         window.currentResultGraph = React.createElement(PerformrRunnerResultGraph.default, {resultObject: window.currentResultObject})
         ReactDOM.render(
           window.currentResultGraph,
