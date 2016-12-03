@@ -36,9 +36,9 @@ export default class GraphHeader extends PureComponent {
         return (
             <div className="GraphHeader">
                 <PlotHeader
+                    config={this.props.config}
                     pixelsPerMillisecond={this.props.pixelsPerMillisecond}
                     ref={this._setPlotHeader}
-                    resultObject={this.props.resultObject}
                 />
             </div>
         );
@@ -46,6 +46,6 @@ export default class GraphHeader extends PureComponent {
 }
 
 GraphHeader.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    resultObject: ImmutablePropTypes.map.isRequired,
 };

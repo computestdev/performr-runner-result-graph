@@ -24,7 +24,7 @@ export default class EventDetails extends PureComponent {
     }
 
     render() {
-        const {event} = this.props;
+        const {config, event} = this.props;
 
         return (
             <div className="EventDetails">
@@ -36,8 +36,8 @@ export default class EventDetails extends PureComponent {
                     {event.get('comment')}
                 </div>
                 <div className="meta">
-                    <EventTimingTable event={event} resultObject={this.props.resultObject}/>
-                    <EventMetaDataTable event={event} resultObject={this.props.resultObject}/>
+                    <EventTimingTable config={config} event={event}/>
+                    <EventMetaDataTable config={config} event={event}/>
                 </div>
             </div>
         );
@@ -55,7 +55,7 @@ export default class EventDetails extends PureComponent {
 }
 
 EventDetails.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
     onClose: React.PropTypes.func,
-    resultObject: ImmutablePropTypes.map.isRequired,
 };

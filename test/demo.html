@@ -3,6 +3,7 @@
     <head>
         <script src="../node_modules/react/dist/react.js"></script>
         <script src="../node_modules/react-dom/dist/react-dom.js"></script>
+        <script src="../node_modules/redux/dist/redux.js"></script>
         <script src="../bundle.js"></script>
         <style>
             #upload {
@@ -25,10 +26,21 @@
         <div id="demo-container"></div>
         <script>
             const render = resultObject => {
-                window.currentResultObject = PerformrRunnerResultGraph.parseResultObject(resultObject);
-                window.currentResultGraph = React.createElement(PerformrRunnerResultGraph.default, {resultObject: window.currentResultObject})
+                window.myResultObject = PerformrRunnerResultGraph.parseResultObject(resultObject);
+
+                window.myStore = Redux.createStore(
+                    PerformrRunnerResultGraph.createReducer('foo'),
+                    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+                );
+
+                window.myResultGraph = React.createElement(PerformrRunnerResultGraph.default, {
+                    resultObject: window.myResultObject,
+                    store: window.myStore,
+                    instanceKey: 'foo',
+                });
+
                 ReactDOM.render(
-                    window.currentResultGraph,
+                    window.myResultGraph,
                     document.querySelector('#demo-container')
                 );
             };

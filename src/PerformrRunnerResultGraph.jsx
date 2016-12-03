@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import style from './PerformrRunnerResultGraph.scss';
 import ResultGraph from './components/ResultGraph';
-import reducer from './reducers';
+import createReducer from './reducers';
+import Config from './Config';
+
+// this module is the main export for this package
+
+export {createReducer};
 
 const buildEventLookupMap = (mapArg, events) => {
     let map = mapArg;
@@ -52,7 +56,9 @@ export const parseResultObject = resultObject => {
 export default class PerformrRunnerResultGraph extends Component {
     constructor(props) {
         super(props);
-        this.store = createStore(reducer);
+
+        this._configCached = new Config();
+        this._defaultStoreCached = null;
     }
 
     componentWillMount() {
@@ -68,21 +74,38 @@ export default class PerformrRunnerResultGraph extends Component {
     }
 
     render() {
+        if (!this.props.store && !this._defaultStoreCached) {
+            this._defaultStoreCached = createStore(createReducer(this.props.instanceKey), new Immutable.Map());
+        }
+
+        // Immutable.js returns the same object in set() if the value has not changed,
+        // so caching the config here makes sure our pure components do not have to re-render
+        this._configCached = this._configCached
+            .set('instanceKey', this.props.instanceKey)
+            .set('resultObject', this.props.resultObject)
+            .set('store', this.props.store || this._defaultStoreCached);
+
         return (
             <div className="PerformrRunnerResultGraph">
-                <Provider store={this.store}>
-                    <ResultGraph pixelsPerMillisecond={this.props.pixelsPerMillisecond} resultObject={this.props.resultObject}/>
-                </Provider>
+                <ResultGraph
+                    config={this._configCached}
+                    pixelsPerMillisecond={this.props.pixelsPerMillisecond}
+                />
             </div>
         );
     }
 }
 
 PerformrRunnerResultGraph.defaultProps = {
+    instanceKey: 'default',
     pixelsPerMillisecond: 1 / 5, // 1s = 200px
+    store: null,
 };
 
 PerformrRunnerResultGraph.propTypes = {
+    // The instanceKey us used as a key for Immutable.Map, but also in strict equality checks
+    // (e.g. foo.instanceKey === bar.instanceKey)
+    instanceKey: React.PropTypes.any.isRequired,
     pixelsPerMillisecond: React.PropTypes.number.isRequired,
 
     // not an exhaustive check, but it should catch most mistakes:
@@ -91,4 +114,6 @@ PerformrRunnerResultGraph.propTypes = {
         timing: ImmutablePropTypes.map.isRequired,
         transactions: ImmutablePropTypes.list.isRequired,
     }).isRequired,
+
+    store: React.PropTypes.object,
 };

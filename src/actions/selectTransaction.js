@@ -1,6 +1,7 @@
-const selectTransaction = (transactionId) => ({
+const selectTransaction = (instanceKey, transactionId) => ({
     id: transactionId,
-    type: 'SELECT_TRANSACTION',
+    instanceKey,
+    type: 'PerformrRunnerResultGraph/SELECT_TRANSACTION',
 });
 
 export default selectTransaction;

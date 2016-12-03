@@ -1,5 +1,5 @@
 const selectedEvent = (state = '', action) => {
-    if (action.type === 'SELECT_EVENT') {
+    if (action.type === 'PerformrRunnerResultGraph/SELECT_EVENT') {
         return action.id;
     }
 

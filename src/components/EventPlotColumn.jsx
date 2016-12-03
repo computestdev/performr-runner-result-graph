@@ -34,8 +34,10 @@ export default class EventPlotColumn extends PureComponent {
     }
 
     render() {
-        const pixelsPerSecond = this.props.pixelsPerMillisecond * 1000;
-        const pixelsPerDecisecond = this.props.pixelsPerMillisecond * 100;
+        const {config, pixelsPerMillisecond} = this.props;
+        const {resultObject} = config;
+        const pixelsPerSecond = pixelsPerMillisecond * 1000;
+        const pixelsPerDecisecond = pixelsPerMillisecond * 100;
 
         const majorGrid = [
             '90deg',
@@ -61,14 +63,14 @@ export default class EventPlotColumn extends PureComponent {
                         style={{
                             background: 'repeating-linear-gradient(' + majorGrid.join(',') + '),' +
                                         'repeating-linear-gradient(' + minorGrid.join(',') + ')',
-                            width: getScriptPlotWidth(this.props.resultObject, this.props.pixelsPerMillisecond) + 'px',
+                            width: getScriptPlotWidth(resultObject, pixelsPerMillisecond) + 'px',
                         }}
                     >
                         {this.renderSelectedTransactionIndicator()}
                         <EventPlot
-                            events={this.props.resultObject.get('events')}
-                            pixelsPerMillisecond={this.props.pixelsPerMillisecond}
-                            resultObject={this.props.resultObject}
+                            config={config}
+                            events={resultObject.get('events')}
+                            pixelsPerMillisecond={pixelsPerMillisecond}
                         />
                     </div>
                 </div>
@@ -77,7 +79,8 @@ export default class EventPlotColumn extends PureComponent {
     }
 
     renderSelectedTransactionIndicator() {
-        const {pixelsPerMillisecond, resultObject, selectedTransaction} = this.props;
+        const {config, pixelsPerMillisecond, selectedTransaction} = this.props;
+        const {resultObject} = config;
 
         if (!selectedTransaction) {
             return null;
@@ -111,7 +114,7 @@ export default class EventPlotColumn extends PureComponent {
 }
 
 EventPlotColumn.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    resultObject: ImmutablePropTypes.map.isRequired,
     selectedTransaction: ImmutablePropTypes.map,
 };

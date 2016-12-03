@@ -12,16 +12,16 @@ class EventPlotColumnWrapper extends PureComponent {
     }
 
     render() {
-        const {selectedTransaction, pixelsPerMillisecond, resultObject} = this.props;
+        const {config, selectedTransaction, pixelsPerMillisecond} = this.props;
         const transactionObject = selectedTransaction
-            ? resultObject.getIn(['transactionMap', selectedTransaction])
+            ? config.resultObject.getIn(['transactionMap', selectedTransaction])
             : null;
 
         return (
             <EventPlotColumn
+                config={config}
                 pixelsPerMillisecond={pixelsPerMillisecond}
                 ref={this._setWrapped}
-                resultObject={resultObject}
                 selectedTransaction={transactionObject}
             />
         );
@@ -29,13 +29,13 @@ class EventPlotColumnWrapper extends PureComponent {
 }
 
 EventPlotColumnWrapper.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    resultObject: ImmutablePropTypes.map.isRequired,
     selectedTransaction: React.PropTypes.string,
 };
 
-const mapStateToProps = (state, ownProps) => ({
-    selectedTransaction: state.selectedTransaction,
+const mapStateToProps = (state, {config}) => ({
+    selectedTransaction: config.getMyState(state, ['selectedTransaction'], ''),
 });
 
 const EventPlotColumnContainer = connect(mapStateToProps, null, null, {withRef: true})(EventPlotColumnWrapper);

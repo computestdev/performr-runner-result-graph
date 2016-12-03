@@ -1,7 +1,7 @@
-import {Map} from 'immutable';
+import {Map as ImmutableMap} from 'immutable';
 
-const expandedEvents = (state = new Map(), action) => {
-    if (action.type === 'EXPAND_EVENT') {
+const expandedEvents = (state = new ImmutableMap(), action) => {
+    if (action.type === 'PerformrRunnerResultGraph/EXPAND_EVENT') {
         return state.set(action.id, action.expanded);
     }
 

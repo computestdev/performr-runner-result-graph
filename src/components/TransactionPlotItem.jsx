@@ -61,11 +61,14 @@ export default class TransactionPlotItem extends PureComponent {
     }
 
     renderPlot() {
-        const relativeBegin = this.props.transaction.getIn(['timing', 'begin', 'counter']) -
-            this.props.resultObject.getIn(['timing', 'begin', 'counter']);
+        const {config, pixelsPerMillisecond} = this.props;
+        const {resultObject} = config;
 
-        const left = relativeBegin * this.props.pixelsPerMillisecond;
-        let width = this.transactionDuration * this.props.pixelsPerMillisecond;
+        const relativeBegin = this.props.transaction.getIn(['timing', 'begin', 'counter']) -
+            resultObject.getIn(['timing', 'begin', 'counter']);
+
+        const left = relativeBegin * pixelsPerMillisecond;
+        let width = this.transactionDuration * pixelsPerMillisecond;
 
         if (width < 1) {
             width = 1;
@@ -94,8 +97,8 @@ export default class TransactionPlotItem extends PureComponent {
 }
 
 TransactionPlotItem.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     onTransactionSelected: React.PropTypes.func,
     pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    resultObject: ImmutablePropTypes.map.isRequired,
     transaction: ImmutablePropTypes.map.isRequired,
 };

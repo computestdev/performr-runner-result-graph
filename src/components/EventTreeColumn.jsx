@@ -12,8 +12,8 @@ export default class EventTreeColumn extends PureComponent {
         return (
             <div className="EventTreeColumn">
                 <EventTree
-                    events={this.props.resultObject.get('events')}
-                    resultObject={this.props.resultObject}
+                    config={this.props.config}
+                    events={this.props.config.resultObject.get('events')}
                 />
             </div>
         );
@@ -21,5 +21,5 @@ export default class EventTreeColumn extends PureComponent {
 }
 
 EventTreeColumn.propTypes = {
-    resultObject: ImmutablePropTypes.map.isRequired,
+    config: ImmutablePropTypes.record.isRequired,
 };

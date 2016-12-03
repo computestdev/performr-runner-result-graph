@@ -84,6 +84,6 @@ export default class EventMetaDataTable extends PureComponent {
 }
 
 EventMetaDataTable.propTypes = {
+    // config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
-    // resultObject: ImmutablePropTypes.map.isRequired,
 };

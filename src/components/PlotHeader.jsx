@@ -34,16 +34,19 @@ export default class PlotHeader extends PureComponent {
     }
 
     render() {
+        const {config, pixelsPerMillisecond} = this.props;
+        const {resultObject} = config;
+
         return (
             <div className="PlotHeader">
                 <div className="scroller" ref={this._setScrollerNode}>
                     <div
                         className="scrollArea"
                         style={{
-                            width: getScriptPlotWidth(this.props.resultObject, this.props.pixelsPerMillisecond) + 'px',
+                            width: getScriptPlotWidth(resultObject, pixelsPerMillisecond) + 'px',
                         }}
                     >
-                        <TransactionPlot pixelsPerMillisecond={this.props.pixelsPerMillisecond} resultObject={this.props.resultObject}/>
+                        <TransactionPlot config={config} pixelsPerMillisecond={pixelsPerMillisecond}/>
                         <div className="gridLabels">
                             {this.renderGridLabels()}
                         </div>
@@ -54,8 +57,10 @@ export default class PlotHeader extends PureComponent {
     }
 
     renderGridLabels() {
-        const pixelsPerSecond = this.props.pixelsPerMillisecond * 1000;
-        const duration = this.props.resultObject.getIn(['timing', 'duration']);
+        const {config, pixelsPerMillisecond} = this.props;
+        const {resultObject} = config;
+        const pixelsPerSecond = pixelsPerMillisecond * 1000;
+        const duration = resultObject.getIn(['timing', 'duration']);
         const seconds = Math.floor(duration / 1000);
         const result = [];
 
@@ -70,6 +75,6 @@ export default class PlotHeader extends PureComponent {
 }
 
 PlotHeader.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    resultObject: ImmutablePropTypes.map.isRequired,
 };

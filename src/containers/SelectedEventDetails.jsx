@@ -7,13 +7,13 @@ import EventDetails from '../components/EventDetails';
 
 class SelectedEventDetailsWrapper extends PureComponent {
     render() {
-        const {selectedEvent, resultObject} = this.props;
+        const {config, selectedEvent} = this.props;
 
         if (selectedEvent) {
-            const event = resultObject.getIn(['eventMap', selectedEvent]);
+            const event = config.resultObject.getIn(['eventMap', selectedEvent]);
 
             return (
-                <EventDetails event={event} onClose={this.props.onClose} resultObject={resultObject}/>
+                <EventDetails config={config} event={event} onClose={this.props.onClose}/>
             );
         }
 
@@ -22,17 +22,17 @@ class SelectedEventDetailsWrapper extends PureComponent {
 }
 
 SelectedEventDetailsWrapper.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     onClose: React.PropTypes.func,
-    resultObject: ImmutablePropTypes.map.isRequired,
     selectedEvent: React.PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => ({
-    selectedEvent: state.selectedEvent,
+const mapStateToProps = (state, {config}) => ({
+    selectedEvent: config.getMyState(state, ['selectedEvent'], ''),
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    onClose: () => dispatch(selectEvent('')),
+const mapDispatchToProps = (dispatch, {config}) => ({
+    onClose: () => dispatch(selectEvent(config.instanceKey, '')),
 });
 
 const SelectedEventDetails = connect(mapStateToProps, mapDispatchToProps)(SelectedEventDetailsWrapper);

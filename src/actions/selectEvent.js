@@ -1,6 +1,7 @@
-const selectEvent = eventId => ({
+const selectEvent = (instanceKey, eventId) => ({
     id: eventId,
-    type: 'SELECT_EVENT',
+    instanceKey,
+    type: 'PerformrRunnerResultGraph/SELECT_EVENT',
 });
 
 export default selectEvent;

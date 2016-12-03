@@ -5,7 +5,7 @@ import getScriptPlotWidth from '../getScriptPlotWidth';
 import GraphHeader from './GraphHeader';
 import EventTreeColumn from './EventTreeColumn';
 import EventPlotColumnContainer from '../containers/EventPlotColumn';
-import SelectedEventDetails from '../containers/SelectedEventDetails';
+import SelectedEventDetailsContainer from '../containers/SelectedEventDetails';
 import NativeScrollXInput from './NativeScrollXInput';
 
 import style from './style/ResultGraph.scss';
@@ -84,36 +84,38 @@ export default class ResultGraph extends PureComponent {
     }
 
     render() {
+        const {config, pixelsPerMillisecond} = this.props;
         return (
             <div className="ResultGraph" ref={this._setWrapperNode}>
                 <GraphHeader
-                    pixelsPerMillisecond={this.props.pixelsPerMillisecond}
+                    config={config}
+                    pixelsPerMillisecond={pixelsPerMillisecond}
                     ref={this._setGraphHeader}
-                    resultObject={this.props.resultObject}
                 />
                 <div className="eventPlot">
                     <div className="scroller">
                         <div className="scrollArea">
-                            <EventTreeColumn resultObject={this.props.resultObject}/>
+                            <EventTreeColumn config={config}/>
                             <EventPlotColumnContainer
-                                pixelsPerMillisecond={this.props.pixelsPerMillisecond}
+                                config={config}
+                                pixelsPerMillisecond={pixelsPerMillisecond}
                                 ref={this._setEventPlotColumn}
-                                resultObject={this.props.resultObject}
+                                store={config.store}
                             />
                         </div>
                     </div>
                     <NativeScrollXInput
-                        pixelRange={getScriptPlotWidth(this.props.resultObject, this.props.pixelsPerMillisecond)}
+                        pixelRange={getScriptPlotWidth(config.resultObject, pixelsPerMillisecond)}
                         ref={this._setEventPlotScrollXInput}
                     />
                 </div>
-                <SelectedEventDetails resultObject={this.props.resultObject}/>
+                <SelectedEventDetailsContainer config={config} store={config.store}/>
             </div>
         );
     }
 }
 
 ResultGraph.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    resultObject: ImmutablePropTypes.map.isRequired,
 };

@@ -1,5 +1,5 @@
 const selectedTransaction = (state = '', action) => {
-    if (action.type === 'SELECT_TRANSACTION') {
+    if (action.type === 'PerformrRunnerResultGraph/SELECT_TRANSACTION') {
         return action.id;
     }
 

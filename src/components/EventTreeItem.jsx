@@ -138,8 +138,8 @@ export default class EventTreeItem extends PureComponent {
         return (
             <div className="children">
                 <EventTree
+                    config={this.props.config}
                     events={this.eventChildren}
-                    resultObject={this.props.resultObject}
                 />
             </div>
         );
@@ -147,11 +147,11 @@ export default class EventTreeItem extends PureComponent {
 }
 
 EventTreeItem.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
     expanded: React.PropTypes.bool.isRequired,
     onEventExpand: React.PropTypes.func,
     onEventSelected: React.PropTypes.func,
-    resultObject: ImmutablePropTypes.map.isRequired,
     selected: React.PropTypes.bool.isRequired,
 };
 

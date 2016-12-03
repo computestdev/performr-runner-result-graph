@@ -6,8 +6,8 @@ import selectTransaction from '../actions/selectTransaction';
 const mapStateToProps = (state, ownProps) => ({
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    onTransactionSelected: transactionId => dispatch(selectTransaction(transactionId)),
+const mapDispatchToProps = (dispatch, {config}) => ({
+    onTransactionSelected: transactionId => dispatch(selectTransaction(config.instanceKey, transactionId)),
 });
 
 const TransactionPlotItemContainer = connect(mapStateToProps, mapDispatchToProps)(TransactionPlotItem);

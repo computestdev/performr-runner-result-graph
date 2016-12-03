@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import Immutable from 'immutable';
 
 import TransactionPlotItemContainer from '../containers/TransactionPlotItem';
 import balanceEntitiesOverPlotLines from '../balanceEntitiesOverPlotLines';
@@ -25,13 +26,13 @@ export default class TransactionPlot extends PureComponent {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.resultObject !== nextProps.resultObject) {
+        if (!Immutable.is(this.props.config, nextProps.config)) {
             this.calculatePositions();
         }
     }
 
     calculatePositions() {
-        this._transactionPositions = balanceEntitiesOverPlotLines(this.props.resultObject.get('transactions'));
+        this._transactionPositions = balanceEntitiesOverPlotLines(this.props.config.resultObject.get('transactions'));
     }
 
     render() {
@@ -51,9 +52,10 @@ export default class TransactionPlot extends PureComponent {
     renderLine(line) {
         return line.map(transaction =>
             <TransactionPlotItemContainer
+                config={this.props.config}
                 key={transaction.get('id')}
                 pixelsPerMillisecond={this.props.pixelsPerMillisecond}
-                resultObject={this.props.resultObject}
+                store={this.props.config.store}
                 transaction={transaction}
             />
         );
@@ -61,6 +63,6 @@ export default class TransactionPlot extends PureComponent {
 }
 
 TransactionPlot.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    resultObject: ImmutablePropTypes.map.isRequired,
 };

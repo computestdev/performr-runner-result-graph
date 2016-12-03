@@ -22,21 +22,22 @@ export default class EventTree extends PureComponent {
         const eventBegin = event.getIn(['timing', 'begin', 'counter']);
 
         // The event started after the script ended (and the browser tab is being cleaned up & closed)
-        if (eventBegin >= this.props.resultObject.getIn(['timing', 'end', 'counter'])) {
+        if (eventBegin >= this.props.config.resultObject.getIn(['timing', 'end', 'counter'])) {
             return null;
         }
 
         return (
             <EventTreeItemContainer
+                config={this.props.config}
                 event={event}
                 key={event.get('id')}
-                resultObject={this.props.resultObject}
+                store={this.props.config.store}
             />
         );
     }
 }
 
 EventTree.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     events: ImmutablePropTypes.list.isRequired,
-    resultObject: ImmutablePropTypes.map.isRequired,
 };

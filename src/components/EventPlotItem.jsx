@@ -77,18 +77,21 @@ export default class EventPlotItem extends PureComponent {
     }
 
     renderPlot() {
-        const relativeBegin = this.props.event.getIn(['timing', 'begin', 'counter']) -
-            this.props.resultObject.getIn(['timing', 'begin', 'counter']);
+        const {config, pixelsPerMillisecond} = this.props;
+        const {resultObject} = config;
 
-        const left = relativeBegin * this.props.pixelsPerMillisecond;
+        const relativeBegin = this.props.event.getIn(['timing', 'begin', 'counter']) -
+            resultObject.getIn(['timing', 'begin', 'counter']);
+
+        const left = relativeBegin * pixelsPerMillisecond;
         let width;
 
         if (this.eventHasEnded) {
-            width = this.eventDuration * this.props.pixelsPerMillisecond;
+            width = this.eventDuration * pixelsPerMillisecond;
         }
         else {
             // pretend that the event extends out of the plot
-            const plotWidth = getScriptPlotWidth(this.props.resultObject, this.props.pixelsPerMillisecond);
+            const plotWidth = getScriptPlotWidth(resultObject, pixelsPerMillisecond);
             width = plotWidth - left;
         }
 
@@ -125,9 +128,9 @@ export default class EventPlotItem extends PureComponent {
         return (
             <div className="children">
                 <EventPlot
+                    config={this.props.config}
                     events={this.eventChildren}
                     pixelsPerMillisecond={this.props.pixelsPerMillisecond}
-                    resultObject={this.props.resultObject}
                 />
             </div>
         );
@@ -135,10 +138,10 @@ export default class EventPlotItem extends PureComponent {
 }
 
 EventPlotItem.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
     expanded: React.PropTypes.bool.isRequired,
     pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    resultObject: ImmutablePropTypes.map.isRequired,
     selected: React.PropTypes.bool.isRequired,
 };
 

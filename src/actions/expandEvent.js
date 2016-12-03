@@ -1,7 +1,8 @@
-const expandEvent = (eventId, expanded) => ({
+const expandEvent = (instanceKey, eventId, expanded) => ({
     expanded: Boolean(expanded),
     id: eventId,
-    type: 'EXPAND_EVENT',
+    instanceKey,
+    type: 'PerformrRunnerResultGraph/EXPAND_EVENT',
 });
 
 export default expandEvent;

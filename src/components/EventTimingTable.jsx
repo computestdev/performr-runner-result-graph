@@ -22,7 +22,7 @@ export default class EventTimingTable extends PureComponent {
     }
 
     render() {
-        const scriptBegin = this.props.resultObject.getIn(['timing', 'begin', 'counter']);
+        const scriptBegin = this.props.config.resultObject.getIn(['timing', 'begin', 'counter']);
         const begin = this.props.event.getIn(['timing', 'begin', 'counter']);
         const end = this.props.event.getIn(['timing', 'end', 'counter']);
         const duration = this.props.event.getIn(['timing', 'duration']);
@@ -65,7 +65,7 @@ EventTimingTable.defaultProps = {
 };
 
 EventTimingTable.propTypes = {
+    config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
-    resultObject: ImmutablePropTypes.map.isRequired,
     timeFormat: React.PropTypes.string.isRequired,
 };
