@@ -20,37 +20,36 @@ const buildEventLookupMap = (mapArg, events) => {
     return map;
 };
 
-export default class PerformrRunnerResultGraph extends Component {
-    static parseResultObject(resultObject) {
-
-        // quick check to detect most invalid objects
-        if (typeof resultObject !== 'object' ||
-            typeof resultObject.timing !== 'object' ||
-            typeof resultObject.timing.begin !== 'object' ||
-            !Array.isArray(resultObject.transactions) ||
-            !Array.isArray(resultObject.events)
-        ) {
-            throw Error('PerformrRunnerResultGraph.parseResultObject: Invalid argument');
-        }
-
-        const result = Immutable.fromJS(resultObject);
-
-        const eventMap = new Immutable.Map().withMutations(map => {
-            buildEventLookupMap(map, result.get('events'));
-        });
-
-        const transactionMap = new Immutable.Map().withMutations(map => {
-            // eslint-disable-next-line prefer-const
-            for (let transaction of result.get('transactions')) {
-                map.set(transaction.get('id'), transaction);
-            }
-        });
-
-        return result
-            .set('eventMap', eventMap)
-            .set('transactionMap', transactionMap);
+export const parseResultObject = resultObject => {
+    // quick check to detect most invalid objects
+    if (typeof resultObject !== 'object' ||
+        typeof resultObject.timing !== 'object' ||
+        typeof resultObject.timing.begin !== 'object' ||
+        !Array.isArray(resultObject.transactions) ||
+        !Array.isArray(resultObject.events)
+    ) {
+        throw Error('PerformrRunnerResultGraph.parseResultObject: Invalid argument');
     }
 
+    const result = Immutable.fromJS(resultObject);
+
+    const eventMap = new Immutable.Map().withMutations(map => {
+        buildEventLookupMap(map, result.get('events'));
+    });
+
+    const transactionMap = new Immutable.Map().withMutations(map => {
+        // eslint-disable-next-line prefer-const
+        for (let transaction of result.get('transactions')) {
+            map.set(transaction.get('id'), transaction);
+        }
+    });
+
+    return result
+        .set('eventMap', eventMap)
+        .set('transactionMap', transactionMap);
+};
+
+export default class PerformrRunnerResultGraph extends Component {
     constructor(props) {
         super(props);
         this.store = createStore(reducer);

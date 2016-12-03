@@ -25,7 +25,7 @@
         <div id="demo-container"></div>
         <script>
             const render = resultObject => {
-                window.currentResultObject = PerformrRunnerResultGraph.default.parseResultObject(resultObject);
+                window.currentResultObject = PerformrRunnerResultGraph.parseResultObject(resultObject);
                 window.currentResultGraph = React.createElement(PerformrRunnerResultGraph.default, {resultObject: window.currentResultObject})
                 ReactDOM.render(
                     window.currentResultGraph,
