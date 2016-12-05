@@ -7,7 +7,6 @@ export default class TransactionPlotItem extends PureComponent {
     constructor(props) {
         super(props);
         this.handlePlotClick = this.handlePlotClick.bind(this);
-        this.handlePlotKeyPress = this.handlePlotKeyPress.bind(this);
     }
 
     componentWillMount() {
@@ -43,18 +42,15 @@ export default class TransactionPlotItem extends PureComponent {
         }
     }
 
-    handlePlotKeyPress(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (this.props.onTransactionSelected && e.key === 'Enter') {
-            this.props.onTransactionSelected(this.transactionId);
-        }
-    }
-
     render() {
+        const className = ['TransactionPlotItem'];
+
+        if (this.props.selected) {
+            className.push('selected');
+        }
+
         return (
-            <div className="TransactionPlotItem">
+            <div className={className.join(' ')}>
                 {this.renderPlot()}
             </div>
         );
@@ -78,27 +74,30 @@ export default class TransactionPlotItem extends PureComponent {
 
         return (
             <div className="plotWrap" title={time + ': ' + this.transactionId + ': ' + this.transactionTitle}>
-                <div
+                <button
                     className="plot"
                     onClick={this.handlePlotClick}
-                    onKeyPress={this.handlePlotKeyPress}
                     style={{
                         left: left + 'px',
                         width: width + 'px',
                     }}
-                    tabIndex={this.props.onTransactionSelected ? '0' : null}
                 >
                     <span className="title">{this.transactionTitle || this.transactionId}</span>
                     <span className="time">{time}</span>
-                </div>
+                </button>
             </div>
         );
     }
 }
 
+TransactionPlotItem.defaultProps = {
+    selected: false,
+};
+
 TransactionPlotItem.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
     onTransactionSelected: React.PropTypes.func,
     pixelsPerMillisecond: React.PropTypes.number.isRequired,
+    selected: React.PropTypes.bool.isRequired,
     transaction: ImmutablePropTypes.map.isRequired,
 };

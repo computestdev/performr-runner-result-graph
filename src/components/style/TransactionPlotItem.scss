@@ -7,7 +7,7 @@
     > .plotWrap {
         height: $PerformrRunnerResultGraph_transactionPlotHeight;
 
-        > .plot {
+        > button.plot {
             pointer-events: auto;
             position: absolute;
             top: 1px;
@@ -15,6 +15,10 @@
             // left and width are set by script
             background: $PerformrRunnerResultGraph_transactionPlotColorOdd;
             text-align: center;
+            border: none;
+            padding: 0;
+            color: inherit;
+            font: inherit;
             cursor: pointer;
 
             > .title {
