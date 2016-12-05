@@ -2,20 +2,30 @@
 
 .PerformrRunnerResultGraph .EventTreeItem {
     > .title {
+        position: relative;
         height: $PerformrRunnerResultGraph_eventPlotHeight;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         cursor: pointer;
 
-        > .expandButton {
+        > button.expandButton {
             width: 20px;
             height: $PerformrRunnerResultGraph_eventPlotHeight;
             display: inline-flex;
+            position: absolute;
+            top: 0;
+            left: 0;
             justify-content: center;
+            border: none;
+            padding: 0;
+            background: transparent;
+            cursor: crosshair;
+            color: inherit;
+            font: inherit;
 
             &:after {
-                content: "\a0";
+                content: "+";
                 display: inline-block;
                 line-height: 1;
                 font-size: 18px;
@@ -31,6 +41,14 @@
         > .titleText {
             vertical-align: middle;
             line-height: 1;
+            display: block;
+            height: $PerformrRunnerResultGraph_eventPlotHeight;
+            border: none;
+            padding: 0 0 0 20px;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            cursor: pointer;
         }
     }
 
@@ -39,22 +57,12 @@
         padding-left: 25px;
     }
 
-    &.hasChildren > .title {
-        > .expandButton {
-            cursor: crosshair;
-
-            &:after {
-                content: "+";
-            }
-        }
-    }
-
     &.expanded > .children {
         display: block;
     }
 
     &.expanded > .title {
-        > .expandButton {
+        > button.expandButton {
             &:after {
                 content: "-";
             }

@@ -8,9 +8,7 @@ export default class EventTreeItem extends PureComponent {
     constructor(props) {
         super(props);
         this.handleTitleClick = this.handleTitleClick.bind(this);
-        this.handleTitleKeyPress = this.handleTitleKeyPress.bind(this);
         this.handleExpandClick = this.handleExpandClick.bind(this);
-        this.handleExpandKeyPress = this.handleExpandKeyPress.bind(this);
     }
 
     componentWillMount() {
@@ -58,29 +56,11 @@ export default class EventTreeItem extends PureComponent {
         }
     }
 
-    handleTitleKeyPress(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (this.props.onEventSelected && e.key === 'Enter') {
-            this.props.onEventSelected(this.eventId);
-        }
-    }
-
     handleExpandClick(e) {
         e.preventDefault();
         e.stopPropagation();
 
         if (this.props.onEventExpand) {
-            this.props.onEventExpand(this.eventId, !this.props.expanded);
-        }
-    }
-
-    handleExpandKeyPress(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (this.props.onEventExpand && e.key === 'Enter') {
             this.props.onEventExpand(this.eventId, !this.props.expanded);
         }
     }
@@ -112,22 +92,30 @@ export default class EventTreeItem extends PureComponent {
 
     renderTitle() {
         return (
-            <div
-                className="title"
-                onClick={this.handleTitleClick}
-                onKeyPress={this.handleTitleKeyPress}
-                tabIndex={this.props.onEventSelected ? '0' : null}
-                title={this.eventLongTitle}
-            >
-                <span
-                    className="expandButton"
-                    onClick={this.handleExpandClick}
-                    onKeyPress={this.handleExpandKeyPress}
-                    tabIndex={this.props.onEventExpand && this.hasChildren ? '0' : null}
-                />
-                <span className="titleText">{this.eventShortTitle || this.eventType}</span>
+            <div className="title" title={this.eventLongTitle}>
+                {this.renderExpandButton()}
+
+                <button
+                    className="titleText"
+                    onClick={this.handleTitleClick}
+                >
+                    {this.eventShortTitle || this.eventType}
+                </button>
             </div>
         );
+    }
+
+    renderExpandButton() {
+        if (this.props.onEventExpand && this.hasChildren) {
+            return (
+                <button
+                    className="expandButton"
+                    onClick={this.handleExpandClick}
+                />
+            );
+        }
+
+        return null;
     }
 
     renderChildren() {
