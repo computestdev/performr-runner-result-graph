@@ -4,16 +4,15 @@
         "es6": true
     },
     "globals": {
-        "__dirname": true, // browserify
-        "Buffer": true,
-        "clearImmediate": true,
-        "clearInterval": true,
-        "clearTimeout": true,
-        "console": true,
-        "dump": true,
-        "setImmediate": true,
-        "setInterval": true,
-        "setTimeout": true
+        "__dirname": false,
+        "Buffer": false,
+        "clearImmediate": false,
+        "clearInterval": false,
+        "clearTimeout": false,
+        "console": false,
+        "setImmediate": false,
+        "setInterval": false,
+        "setTimeout": false
     },
     "parser": "babel-eslint",
     "parserOptions": {
