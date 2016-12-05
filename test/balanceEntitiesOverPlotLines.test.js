@@ -1,4 +1,3 @@
-import {describe, it} from 'mocha-sugar-free';
 import {assert} from 'chai';
 import balanceEntitiesOverPlotLines from '../src/balanceEntitiesOverPlotLines';
 import {List, fromJS} from 'immutable';

@@ -5,6 +5,5 @@
 *.xpi
 /bundle.js
 /bundle.js.map
-/test-bundle.js
-/test-bundle.js.map
 npm-debug.log
+/coverage

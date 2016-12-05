@@ -4,5 +4,14 @@
         "ecmaFeatures": {
             "jsx": true
         }
+    },
+    "globals": {
+        "describe": false,
+        "it": false,
+        "afterEach": false,
+        "beforeEach": false,
+        "afterAll": false,
+        "beforeAll": false,
+        "jest": false
     }
 }

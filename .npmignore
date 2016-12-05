@@ -3,6 +3,5 @@
 /.idea
 /PRIV
 *.xpi
-/test-bundle.js
-/test-bundle.js.map
 npm-debug.log
+/coverage
