@@ -16,20 +16,7 @@ module.exports = {
             {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                query: {
-                    plugins: ['transform-es2015-modules-commonjs'],
-                    presets: ['es2016', 'es2017'],
-                },
-                test: /\.js$/,
-            },
-            {
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    plugins: ['transform-es2015-modules-commonjs'],
-                    presets: ['react', 'es2016', 'es2017'],
-                },
-                test: /\.jsx$/,
+                test: /\.jsx?$/,
             },
             {
                 loaders: ['style-loader', 'css-loader', 'sass-loader'],
