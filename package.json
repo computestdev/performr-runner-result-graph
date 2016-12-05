@@ -6,7 +6,7 @@
   "scripts": {
     "prepublish": "webpack",
     "start": "webpack-dev-server",
-    "pretest": "eslint src test webpack.config.js",
+    "pretest": "eslint src test webpack.config.js --ext .js,.jsx",
     "test": "jest"
   },
   "repository": {
