@@ -20,6 +20,7 @@
         "sourceType": "script"
     },
     "plugins": [
+        "import",
         "react"
     ],
     "rules": {
@@ -81,6 +82,35 @@
             }
         ],
         "global-require": "error",
+        "import/default": "error",
+        "import/export": "error",
+        "import/first": "error",
+        "import/named": "error",
+        "import/namespace": "error",
+        "import/newline-after-import": "error",
+        "import/no-absolute-path": "error",
+        "import/no-extraneous-dependencies": [
+            "error", {
+                "devDependencies": [
+                    "test/**",
+                    "webpack.config.js"
+                ]
+            }
+        ],
+        "import/no-mutable-exports": "error",
+        "import/no-named-default": "error",
+        "import/no-unassigned-import": "error",
+        "import/no-webpack-loader-syntax": "error",
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    ["builtin", "external"],
+                    ["index","sibling","parent","internal"]
+                ],
+                "newlines-between": "always"
+            }
+        ],
         "indent": [
             "error",
             4,

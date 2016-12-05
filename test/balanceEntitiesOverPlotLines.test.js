@@ -1,6 +1,7 @@
 import {assert} from 'chai';
-import balanceEntitiesOverPlotLines from '../src/balanceEntitiesOverPlotLines';
 import {List, fromJS} from 'immutable';
+
+import balanceEntitiesOverPlotLines from '../src/balanceEntitiesOverPlotLines';
 
 describe('balanceEntitiesOverPlotLines', () => {
     it('should return an empty array if no transactions are given', () => {

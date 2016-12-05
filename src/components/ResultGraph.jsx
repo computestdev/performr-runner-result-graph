@@ -7,7 +7,6 @@ import EventTreeColumn from './EventTreeColumn';
 import EventPlotColumnContainer from '../containers/EventPlotColumn';
 import SelectedEventDetailsContainer from '../containers/SelectedEventDetails';
 import NativeScrollXInput from './NativeScrollXInput';
-
 import style from './style/ResultGraph.scss';
 
 export default class ResultGraph extends PureComponent {
