@@ -6,9 +6,9 @@ import selectedTransaction from './selectedTransaction';
 
 const myReducers = (state = new ImmutableMap(), action) => {
     return state
-        .set('expandedEvents', expandedEvents(state.get('expandedEvents'), action))
-        .set('selectedEvent', selectedEvent(state.get('selectedEvent'), action))
-        .set('selectedTransaction', selectedTransaction(state.get('selectedTransaction'), action))
+    .set('expandedEvents', expandedEvents(state.get('expandedEvents'), action))
+    .set('selectedEvent', selectedEvent(state.get('selectedEvent'), action))
+    .set('selectedTransaction', selectedTransaction(state.get('selectedTransaction'), action))
     ;
 };
 

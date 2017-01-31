@@ -49,8 +49,8 @@ export const parseResultObject = resultObject => {
     });
 
     return result
-        .set('eventMap', eventMap)
-        .set('transactionMap', transactionMap);
+    .set('eventMap', eventMap)
+    .set('transactionMap', transactionMap);
 };
 
 export default class PerformrRunnerResultGraph extends Component {
