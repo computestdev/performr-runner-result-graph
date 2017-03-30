@@ -86,10 +86,10 @@ export default class EventPlotColumn extends PureComponent {
             return null;
         }
 
-        const relativeBegin = selectedTransaction.getIn(['timing', 'begin', 'counter'])
-            - resultObject.getIn(['timing', 'begin', 'counter']);
-        const relativeEnd = selectedTransaction.getIn(['timing', 'end', 'counter'])
-            - resultObject.getIn(['timing', 'begin', 'counter']);
+        const relativeBegin = selectedTransaction.getIn(['timing', 'begin', 'time'])
+            - resultObject.getIn(['timing', 'begin', 'time']);
+        const relativeEnd = selectedTransaction.getIn(['timing', 'end', 'time'])
+            - resultObject.getIn(['timing', 'begin', 'time']);
 
         const beginPx = relativeBegin * pixelsPerMillisecond;
         const endPx = relativeEnd * pixelsPerMillisecond;

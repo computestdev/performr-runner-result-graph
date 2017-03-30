@@ -22,12 +22,7 @@ export default class EventTimingTable extends PureComponent {
     }
 
     render() {
-        const scriptBegin = this.props.config.resultObject.getIn(['timing', 'begin', 'counter']);
-        const begin = this.props.event.getIn(['timing', 'begin', 'counter']);
-        const end = this.props.event.getIn(['timing', 'end', 'counter']);
         const duration = this.props.event.getIn(['timing', 'duration']);
-        const beginTime = moment(this.props.event.getIn(['timing', 'begin', 'time']));
-        const endTime = moment(this.props.event.getIn(['timing', 'end', 'time']));
 
         return (
             <div className="EventTimingTable">
@@ -37,26 +32,49 @@ export default class EventTimingTable extends PureComponent {
                             <th>Duration</th>
                             <td>{duration ? Math.round(duration) + ' ms' : '-'}</td>
                         </tr>
-                        <tr>
-                            <th>Begin</th>
-                            <td>{Math.round(begin - scriptBegin) + ' ms'}</td>
-                        </tr>
-                        <tr>
-                            <th>End</th>
-                            <td>{end ? Math.round(end - scriptBegin) + ' ms' : '-'}</td>
-                        </tr>
-                        <tr>
-                            <th>Begin Time</th>
-                            <td>{beginTime.format(this.props.timeFormat)}</td>
-                        </tr>
-                        <tr>
-                            <th>End Time</th>
-                            <td>{end ? endTime.format(this.props.timeFormat) : '-'}</td>
-                        </tr>
+                        {this.renderContentCounter()}
+                        {this.renderTime()}
                     </tbody>
                 </table>
             </div>
         );
+    }
+
+    renderContentCounter() {
+        const scriptBegin = this.props.config.resultObject.getIn(['timing', 'begin', 'contentCounter']);
+        const begin = this.props.event.getIn(['timing', 'begin', 'contentCounter']);
+        const end = this.props.event.getIn(['timing', 'end', 'contentCounter']);
+
+        if (!begin) {
+            return null;
+        }
+
+        return [
+            <tr key="begin">
+                <th>Begin</th>
+                <td>{Math.round(begin - scriptBegin) + ' ms'}</td>
+            </tr>,
+            <tr key="end">
+                <th>End</th>
+                <td>{end ? Math.round(end - scriptBegin) + ' ms' : '-'}</td>
+            </tr>,
+        ];
+    }
+
+    renderTime() {
+        const begin = moment(this.props.event.getIn(['timing', 'begin', 'time']));
+        const end = moment(this.props.event.getIn(['timing', 'end', 'time']));
+
+        return [
+            <tr key="beginTime">
+                <th>Begin Time</th>
+                <td>{begin.format(this.props.timeFormat)}</td>
+            </tr>,
+            <tr key="endTime">
+                <th>End Time</th>
+                <td>{end ? end.format(this.props.timeFormat) : '-'}</td>
+            </tr>,
+        ];
     }
 }
 

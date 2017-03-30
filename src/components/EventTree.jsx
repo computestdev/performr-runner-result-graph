@@ -19,10 +19,10 @@ export default class EventTree extends PureComponent {
     }
 
     renderEvent(event) {
-        const eventBegin = event.getIn(['timing', 'begin', 'counter']);
+        const eventBegin = event.getIn(['timing', 'begin', 'time']);
 
         // The event started after the script ended (and the browser tab is being cleaned up & closed)
-        if (eventBegin >= this.props.config.resultObject.getIn(['timing', 'end', 'counter'])) {
+        if (eventBegin >= this.props.config.resultObject.getIn(['timing', 'end', 'time'])) {
             return null;
         }
 

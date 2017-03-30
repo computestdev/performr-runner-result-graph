@@ -15,22 +15,22 @@ describe('balanceEntitiesOverPlotLines', () => {
             {
                 id: 0,
                 timing: {
-                    begin: {counter: 10},
-                    end: {counter: 20},
+                    begin: {time: 10},
+                    end: {time: 20},
                 },
             },
             {
                 id: 1,
                 timing: {
-                    begin: {counter: 20},
-                    end: {counter: 30},
+                    begin: {time: 20},
+                    end: {time: 30},
                 },
             },
             {
                 id: 2,
                 timing: {
-                    begin: {counter: 1000},
-                    end: {counter: 1001},
+                    begin: {time: 1000},
+                    end: {time: 1001},
                 },
             },
         ]);
@@ -51,22 +51,22 @@ describe('balanceEntitiesOverPlotLines', () => {
             {
                 id: 0,
                 timing: {
-                    begin: {counter: 10},
-                    end: {counter: 20},
+                    begin: {time: 10},
+                    end: {time: 20},
                 },
             },
             {
                 id: 1,
                 timing: {
-                    begin: {counter: 19},
-                    end: {counter: 30},
+                    begin: {time: 19},
+                    end: {time: 30},
                 },
             },
             {
                 id: 2,
                 timing: {
-                    begin: {counter: 1000},
-                    end: {counter: 1001},
+                    begin: {time: 1000},
+                    end: {time: 1001},
                 },
             },
         ]);
@@ -89,29 +89,29 @@ describe('balanceEntitiesOverPlotLines', () => {
             {
                 id: 0,
                 timing: {
-                    begin: {counter: 10},
-                    end: {counter: 20},
+                    begin: {time: 10},
+                    end: {time: 20},
                 },
             },
             {
                 id: 1,
                 timing: {
-                    begin: {counter: 19},
-                    end: {counter: 30},
+                    begin: {time: 19},
+                    end: {time: 30},
                 },
             },
             {
                 id: 2,
                 timing: {
-                    begin: {counter: 1000},
-                    end: {counter: 1100},
+                    begin: {time: 1000},
+                    end: {time: 1100},
                 },
             },
             {
                 id: 3,
                 timing: {
-                    begin: {counter: 900},
-                    end: {counter: 1001},
+                    begin: {time: 900},
+                    end: {time: 1001},
                 },
             },
         ]);

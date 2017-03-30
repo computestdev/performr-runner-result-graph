@@ -3,8 +3,8 @@ import Immutable from 'immutable';
 const isOverlappingLine = (line, begin, end) => {
     // eslint-disable-next-line prefer-const
     for (let otherEntity of line) {
-        const otherBegin = otherEntity.getIn(['timing', 'begin', 'counter']);
-        const otherEnd = otherEntity.getIn(['timing', 'end', 'counter']);
+        const otherBegin = otherEntity.getIn(['timing', 'begin', 'time']);
+        const otherEnd = otherEntity.getIn(['timing', 'end', 'time']);
 
         if (begin > otherBegin && begin < otherEnd) {
             return true;
@@ -19,8 +19,8 @@ const isOverlappingLine = (line, begin, end) => {
 };
 
 const placeEntity = (lines, entity) => {
-    const begin = entity.getIn(['timing', 'begin', 'counter']);
-    const end = entity.getIn(['timing', 'end', 'counter']);
+    const begin = entity.getIn(['timing', 'begin', 'time']);
+    const end = entity.getIn(['timing', 'end', 'time']);
 
     // eslint-disable-next-line prefer-const
     for (let line of lines) {

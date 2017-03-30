@@ -80,8 +80,8 @@ export default class EventPlotItem extends PureComponent {
         const {config, pixelsPerMillisecond} = this.props;
         const {resultObject} = config;
 
-        const relativeBegin = this.props.event.getIn(['timing', 'begin', 'counter']) -
-            resultObject.getIn(['timing', 'begin', 'counter']);
+        const relativeBegin = this.props.event.getIn(['timing', 'begin', 'time']) -
+            resultObject.getIn(['timing', 'begin', 'time']);
 
         const left = relativeBegin * pixelsPerMillisecond;
         let width;
