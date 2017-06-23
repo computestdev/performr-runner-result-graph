@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import style from './style/EventMetaDataTable.scss';
@@ -6,6 +7,10 @@ import style from './style/EventMetaDataTable.scss';
 export default class EventMetaDataTable extends PureComponent {
     constructor(props) {
         super(props);
+
+        this.handleViewScreenshotButton = () => {
+            this.props.onSelectScreenshot(this.eventId);
+        };
     }
 
     componentWillMount() {
@@ -18,6 +23,10 @@ export default class EventMetaDataTable extends PureComponent {
         if (style.unref) {
             style.unref();
         }
+    }
+
+    get eventId() {
+        return this.props.event.get('id');
     }
 
     get eventType() {
@@ -37,14 +46,9 @@ export default class EventMetaDataTable extends PureComponent {
     }
 
     renderRows() {
-        const {eventType} = this;
         const entries = [...this.props.event.get('metaData').entries()];
 
         return entries.map(([key, value]) => {
-            if (eventType === 'screenshot' && key === 'data') {
-                return null; // this will be a very large value, skip it
-            }
-
             return (
                 <tr key={key}>
                     <th>{String(key)}</th>
@@ -59,6 +63,14 @@ export default class EventMetaDataTable extends PureComponent {
 
         if (!value) {
             return String(value);
+        }
+
+        if (eventType === 'screenshot' && key === 'data') {
+            return (
+                <button className="viewScreenshotButton" onClick={this.handleViewScreenshotButton} type="button">
+                    View Screenshot
+                </button>
+            );
         }
 
         if (typeof value === 'string') {
@@ -86,4 +98,5 @@ export default class EventMetaDataTable extends PureComponent {
 EventMetaDataTable.propTypes = {
     // config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
+    onSelectScreenshot: PropTypes.func.isRequired,
 };

@@ -59,4 +59,13 @@
         height: 200px;
         overflow: auto;
     }
+
+    > .ScreenshotPopup {
+        position: absolute;
+        top: 15px;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        z-index: 100;
+    }
 }

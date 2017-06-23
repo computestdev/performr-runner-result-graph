@@ -25,7 +25,7 @@ export default class EventDetails extends PureComponent {
     }
 
     render() {
-        const {config, event} = this.props;
+        const {config, event, onSelectScreenshot} = this.props;
 
         return (
             <div className="EventDetails">
@@ -38,7 +38,7 @@ export default class EventDetails extends PureComponent {
                 </div>
                 <div className="meta">
                     <EventTimingTable config={config} event={event}/>
-                    <EventMetaDataTable config={config} event={event}/>
+                    <EventMetaDataTable config={config} event={event} onSelectScreenshot={onSelectScreenshot}/>
                 </div>
             </div>
         );
@@ -59,4 +59,5 @@ EventDetails.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
     onClose: PropTypes.func,
+    onSelectScreenshot: PropTypes.func.isRequired,
 };

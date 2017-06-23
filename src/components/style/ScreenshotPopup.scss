@@ -1,0 +1,22 @@
+.PerformrRunnerResultGraph .ScreenshotPopup {
+    position: relative;
+    background: white;
+    border: 1px solid grey;
+
+    > .CloseButton {
+        position: absolute;
+        top: 0;
+        right: 15px;
+        background: white;
+    }
+
+    > .Screenshot {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        overflow: auto;
+    }
+}

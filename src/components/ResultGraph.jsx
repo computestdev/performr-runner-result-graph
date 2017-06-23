@@ -8,6 +8,7 @@ import EventTreeColumn from './EventTreeColumn';
 import EventPlotColumnContainer from '../containers/EventPlotColumn';
 import SelectedEventDetailsContainer from '../containers/SelectedEventDetails';
 import NativeScrollXInput from './NativeScrollXInput';
+import ScreenshotPopupContainer from '../containers/ScreenshotPopup';
 import style from './style/ResultGraph.scss';
 
 export default class ResultGraph extends PureComponent {
@@ -110,6 +111,7 @@ export default class ResultGraph extends PureComponent {
                     />
                 </div>
                 <SelectedEventDetailsContainer config={config} store={config.store}/>
+                <ScreenshotPopupContainer config={config} store={config.store}/>
             </div>
         );
     }

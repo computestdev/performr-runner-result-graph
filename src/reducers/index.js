@@ -3,12 +3,14 @@ import {Map as ImmutableMap} from 'immutable';
 import expandedEvents from './expandedEvents';
 import selectedEvent from './selectedEvent';
 import selectedTransaction from './selectedTransaction';
+import selectedScreenshot from './selectedScreenshot';
 
 const myReducers = (state = new ImmutableMap(), action) => {
     return state
     .set('expandedEvents', expandedEvents(state.get('expandedEvents'), action))
     .set('selectedEvent', selectedEvent(state.get('selectedEvent'), action))
     .set('selectedTransaction', selectedTransaction(state.get('selectedTransaction'), action))
+    .set('selectedScreenshot', selectedScreenshot(state.get('selectedScreenshot'), action))
     ;
 };
 

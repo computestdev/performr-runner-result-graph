@@ -19,6 +19,18 @@
                     > .line {
                         text-indent: 3em hanging;
                     }
+
+                    > .viewScreenshotButton {
+                        background: transparent;
+                        border: none;
+                        color: blue;
+                        cursor: pointer;
+                        padding: 0;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
                 }
             }
         }
