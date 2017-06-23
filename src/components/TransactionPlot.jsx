@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import Immutable from 'immutable';
 
@@ -64,5 +65,5 @@ export default class TransactionPlot extends PureComponent {
 
 TransactionPlot.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
-    pixelsPerMillisecond: React.PropTypes.number.isRequired,
+    pixelsPerMillisecond: PropTypes.number.isRequired,
 };

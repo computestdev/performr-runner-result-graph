@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 import style from './style/NativeScrollXInput.scss';
 
@@ -39,5 +40,5 @@ export default class NativeScrollXInput extends PureComponent {
 }
 
 NativeScrollXInput.propTypes = {
-    pixelRange: React.PropTypes.number.isRequired,
+    pixelRange: PropTypes.number.isRequired,
 };

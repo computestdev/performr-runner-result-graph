@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import style from './style/TransactionPlotItem.scss';
@@ -96,8 +97,8 @@ TransactionPlotItem.defaultProps = {
 
 TransactionPlotItem.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
-    onTransactionSelected: React.PropTypes.func,
-    pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    selected: React.PropTypes.bool.isRequired,
+    onTransactionSelected: PropTypes.func,
+    pixelsPerMillisecond: PropTypes.number.isRequired,
+    selected: PropTypes.bool.isRequired,
     transaction: ImmutablePropTypes.map.isRequired,
 };

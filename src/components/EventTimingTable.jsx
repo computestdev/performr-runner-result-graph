@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import moment from 'moment';
 
@@ -85,5 +86,5 @@ EventTimingTable.defaultProps = {
 EventTimingTable.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
-    timeFormat: React.PropTypes.string.isRequired,
+    timeFormat: PropTypes.string.isRequired,
 };

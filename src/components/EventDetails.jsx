@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import EventTimingTable from './EventTimingTable';
@@ -57,5 +58,5 @@ export default class EventDetails extends PureComponent {
 EventDetails.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
-    onClose: React.PropTypes.func,
+    onClose: PropTypes.func,
 };

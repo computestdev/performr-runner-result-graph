@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 import style from './style/CloseButton.scss';
 
@@ -35,5 +36,5 @@ export default class CloseButton extends PureComponent {
 }
 
 CloseButton.propTypes = {
-    onClose: React.PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
 };

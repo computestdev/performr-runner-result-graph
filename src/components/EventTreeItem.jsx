@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import EventTree from './EventTree';
@@ -137,10 +138,10 @@ export default class EventTreeItem extends PureComponent {
 EventTreeItem.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
-    expanded: React.PropTypes.bool.isRequired,
-    onEventExpand: React.PropTypes.func,
-    onEventSelected: React.PropTypes.func,
-    selected: React.PropTypes.bool.isRequired,
+    expanded: PropTypes.bool.isRequired,
+    onEventExpand: PropTypes.func,
+    onEventSelected: PropTypes.func,
+    selected: PropTypes.bool.isRequired,
 };
 
 EventTreeItem.defaultProps = {

@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import {connect} from 'react-redux';
 
@@ -23,8 +24,8 @@ class SelectedEventDetailsWrapper extends PureComponent {
 
 SelectedEventDetailsWrapper.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
-    onClose: React.PropTypes.func,
-    selectedEvent: React.PropTypes.string.isRequired,
+    onClose: PropTypes.func,
+    selectedEvent: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state, {config}) => ({

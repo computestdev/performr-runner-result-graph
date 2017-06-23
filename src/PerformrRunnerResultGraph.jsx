@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {createStore} from 'redux';
 import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
@@ -105,8 +106,8 @@ PerformrRunnerResultGraph.defaultProps = {
 PerformrRunnerResultGraph.propTypes = {
     // The instanceKey us used as a key for Immutable.Map, but also in strict equality checks
     // (e.g. foo.instanceKey === bar.instanceKey)
-    instanceKey: React.PropTypes.any.isRequired,
-    pixelsPerMillisecond: React.PropTypes.number.isRequired,
+    instanceKey: PropTypes.any.isRequired,
+    pixelsPerMillisecond: PropTypes.number.isRequired,
 
     // not an exhaustive check, but it should catch most mistakes:
     resultObject: ImmutablePropTypes.mapContains({
@@ -115,5 +116,5 @@ PerformrRunnerResultGraph.propTypes = {
         transactions: ImmutablePropTypes.list.isRequired,
     }).isRequired,
 
-    store: React.PropTypes.object,
+    store: PropTypes.object,
 };

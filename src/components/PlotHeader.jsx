@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import getScriptPlotWidth from '../getScriptPlotWidth';
@@ -76,5 +77,5 @@ export default class PlotHeader extends PureComponent {
 
 PlotHeader.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
-    pixelsPerMillisecond: React.PropTypes.number.isRequired,
+    pixelsPerMillisecond: PropTypes.number.isRequired,
 };

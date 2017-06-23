@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import EventPlotItemContainer from '../containers/EventPlotItem';
@@ -42,5 +43,5 @@ export default class EventPlot extends PureComponent {
 EventPlot.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
     events: ImmutablePropTypes.list.isRequired,
-    pixelsPerMillisecond: React.PropTypes.number.isRequired,
+    pixelsPerMillisecond: PropTypes.number.isRequired,
 };

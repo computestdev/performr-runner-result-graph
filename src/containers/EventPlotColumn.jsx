@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import {connect} from 'react-redux';
 
@@ -30,8 +31,8 @@ class EventPlotColumnWrapper extends PureComponent {
 
 EventPlotColumnWrapper.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
-    pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    selectedTransaction: React.PropTypes.string,
+    pixelsPerMillisecond: PropTypes.number.isRequired,
+    selectedTransaction: PropTypes.string,
 };
 
 const mapStateToProps = (state, {config}) => ({

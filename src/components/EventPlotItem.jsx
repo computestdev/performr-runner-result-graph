@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import getScriptPlotWidth from '../getScriptPlotWidth';
@@ -140,9 +141,9 @@ export default class EventPlotItem extends PureComponent {
 EventPlotItem.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
-    expanded: React.PropTypes.bool.isRequired,
-    pixelsPerMillisecond: React.PropTypes.number.isRequired,
-    selected: React.PropTypes.bool.isRequired,
+    expanded: PropTypes.bool.isRequired,
+    pixelsPerMillisecond: PropTypes.number.isRequired,
+    selected: PropTypes.bool.isRequired,
 };
 
 EventPlotItem.defaultProps = {

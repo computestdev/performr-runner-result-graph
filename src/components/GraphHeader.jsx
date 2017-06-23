@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import PlotHeader from './PlotHeader';
@@ -47,5 +48,5 @@ export default class GraphHeader extends PureComponent {
 
 GraphHeader.propTypes = {
     config: ImmutablePropTypes.record.isRequired,
-    pixelsPerMillisecond: React.PropTypes.number.isRequired,
+    pixelsPerMillisecond: PropTypes.number.isRequired,
 };
