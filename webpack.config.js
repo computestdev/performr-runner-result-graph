@@ -12,22 +12,21 @@ module.exports = {
         react: 'React',
     },
     module: {
-        loaders: [
+        rules: [
             {
+                enforce: 'pre',
                 exclude: /node_modules/,
-                loader: 'babel-loader',
                 test: /\.jsx?$/,
+                use: ['eslint-loader'],
             },
             {
-                loaders: ['style-loader', 'css-loader', 'sass-loader'],
+                exclude: /node_modules/,
+                test: /\.jsx?$/,
+                use: ['babel-loader'],
+            },
+            {
                 test: /\.scss$/,
-            },
-        ],
-        preLoaders: [
-            {
-                exclude: /node_modules/,
-                loader: 'eslint-loader',
-                test: /\.jsx?$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
         ],
     },
@@ -39,6 +38,6 @@ module.exports = {
         publicPath: '/',
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
     },
 };
