@@ -82,9 +82,9 @@ export default class PerformrRunnerResultGraph extends Component {
         // Immutable.js returns the same object in set() if the value has not changed,
         // so caching the config here makes sure our pure components do not have to re-render
         this._configCached = this._configCached
-            .set('instanceKey', this.props.instanceKey)
-            .set('resultObject', this.props.resultObject)
-            .set('store', this.props.store || this._defaultStoreCached);
+        .set('instanceKey', this.props.instanceKey)
+        .set('resultObject', this.props.resultObject)
+        .set('store', this.props.store || this._defaultStoreCached);
 
         return (
             <div className="PerformrRunnerResultGraph">

@@ -51,7 +51,7 @@ export default class TransactionPlot extends PureComponent {
     }
 
     renderLine(line) {
-        return line.map(transaction =>
+        return line.map(transaction => (
             <TransactionPlotItemContainer
                 config={this.props.config}
                 key={transaction.get('id')}
@@ -59,7 +59,7 @@ export default class TransactionPlot extends PureComponent {
                 store={this.props.config.store}
                 transaction={transaction}
             />
-        );
+        ));
     }
 }
 
