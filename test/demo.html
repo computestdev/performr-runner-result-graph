@@ -54,8 +54,13 @@
 
                 const reader = new FileReader();
                 reader.onload = () => {
-                    const resultObject = JSON.parse(reader.result);
-                    render(resultObject);
+                    try {
+                        const resultObject = JSON.parse(reader.result);
+                        render(resultObject);
+                    }
+                    catch (err) {
+                        console.error('Parsing failed', err);
+                    }
                 };
                 reader.readAsText(files[0]);
             });
