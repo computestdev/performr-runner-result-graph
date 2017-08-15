@@ -39,9 +39,11 @@
                     instanceKey: 'foo',
                 });
 
+                const container = document.querySelector('#demo-container');
+                ReactDOM.unmountComponentAtNode(container);
                 ReactDOM.render(
                     window.myResultGraph,
-                    document.querySelector('#demo-container')
+                    container
                 );
             };
 
@@ -55,6 +57,7 @@
                 const reader = new FileReader();
                 reader.onload = () => {
                     try {
+                        ReactDOM.unmountComponentAtNode(document.querySelector('#demo-container'));
                         const resultObject = JSON.parse(reader.result);
                         render(resultObject);
                     }
