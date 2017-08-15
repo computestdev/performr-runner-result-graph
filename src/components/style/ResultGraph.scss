@@ -44,6 +44,12 @@
                     width: calc(100% - #{$PerformrRunnerResultGraph_leftColumnWidth});
                     flex: 0 0 auto;
                 }
+
+                > .EventTreeColumn > .EventTree,
+                > .EventPlotColumn > .scroller > .scrollArea > .EventPlot {
+                    // always render at least 25 event rows; otherwise the user might think the GUI is broken
+                    min-height: $PerformrRunnerResultGraph_eventPlotHeight * 25;
+                }
             }
         }
 
