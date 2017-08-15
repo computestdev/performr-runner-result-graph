@@ -33,16 +33,58 @@ export default class EventTimingTable extends PureComponent {
                             <th>Duration</th>
                             <td>{duration ? Math.round(duration) + ' ms' : '-'}</td>
                         </tr>
-                        {this.renderContentCounter()}
                         {this.renderTime()}
+                        <tr>
+                            <td colSpan="2"><hr/></td>
+                        </tr>
+                        {this.renderBackgroundCounter()}
+                        {this.renderScriptCounter()}
+                        {this.renderContentCounter()}
                     </tbody>
                 </table>
             </div>
         );
     }
 
+    renderBackgroundCounter() {
+        const begin = this.props.event.getIn(['timing', 'begin', 'backgroundCounter']);
+        const end = this.props.event.getIn(['timing', 'end', 'backgroundCounter']);
+
+        if (!begin) {
+            return null;
+        }
+
+        return [
+            <tr key="begin">
+                <th rowSpan="2">Background</th>
+                <td title="Performance counter at event begin (in background process)">{Math.round(begin) + ' ms'}</td>
+            </tr>,
+            <tr key="end">
+                <td title="Performance counter at event end (in background process)">{end ? Math.round(end) + ' ms' : '-'}</td>
+            </tr>,
+        ];
+    }
+
+    renderScriptCounter() {
+        const begin = this.props.event.getIn(['timing', 'begin', 'scriptCounter']);
+        const end = this.props.event.getIn(['timing', 'end', 'scriptCounter']);
+
+        if (!begin) {
+            return null;
+        }
+
+        return [
+            <tr key="begin">
+                <th rowSpan="2">Script</th>
+                <td title="Performance counter at event begin (in script process)">{Math.round(begin) + ' ms'}</td>
+            </tr>,
+            <tr key="end">
+                <td title="Performance counter at event end (in script process)">{end ? Math.round(end) + ' ms' : '-'}</td>
+            </tr>,
+        ];
+    }
+
     renderContentCounter() {
-        const scriptBegin = this.props.config.resultObject.getIn(['timing', 'begin', 'contentCounter']);
         const begin = this.props.event.getIn(['timing', 'begin', 'contentCounter']);
         const end = this.props.event.getIn(['timing', 'end', 'contentCounter']);
 
@@ -52,12 +94,11 @@ export default class EventTimingTable extends PureComponent {
 
         return [
             <tr key="begin">
-                <th>Begin</th>
-                <td>{Math.round(begin - scriptBegin) + ' ms'}</td>
+                <th rowSpan="2">Content</th>
+                <td title="Performance counter at event begin (in content process)">{Math.round(begin) + ' ms'}</td>
             </tr>,
             <tr key="end">
-                <th>End</th>
-                <td>{end ? Math.round(end - scriptBegin) + ' ms' : '-'}</td>
+                <td title="Performance counter at event end (in content process)">{end ? Math.round(end) + ' ms' : '-'}</td>
             </tr>,
         ];
     }
@@ -68,23 +109,21 @@ export default class EventTimingTable extends PureComponent {
 
         return [
             <tr key="beginTime">
-                <th>Begin Time</th>
-                <td>{begin.format(this.props.timeFormat)}</td>
+                <th rowSpan="2">Time</th>
+                <td title="Wall time at event begin">{begin.format(this.props.timeFormat)}</td>
             </tr>,
             <tr key="endTime">
-                <th>End Time</th>
-                <td>{end ? end.format(this.props.timeFormat) : '-'}</td>
+                <td title="Wall time at event end">{end ? end.format(this.props.timeFormat) : '-'}</td>
             </tr>,
         ];
     }
 }
 
 EventTimingTable.defaultProps = {
-    timeFormat: 'YYYY-MM-DD HH:mm:ss.SSS',
+    timeFormat: 'YYYY-MM-DD HH:mm:ss SSS',
 };
 
 EventTimingTable.propTypes = {
-    config: ImmutablePropTypes.record.isRequired,
     event: ImmutablePropTypes.map.isRequired,
     timeFormat: PropTypes.string.isRequired,
 };
