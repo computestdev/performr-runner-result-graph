@@ -15,14 +15,23 @@
             // left and width are set by script
             background: $PerformrRunnerResultGraph_transactionPlotColorOdd;
             text-align: center;
+            white-space: nowrap; // Prevent time from writing to next line
+            overflow: hidden;
+            text-overflow: ellipsis;
             border: none;
             padding: 0;
             color: inherit;
             font: inherit;
             cursor: pointer;
 
+            &:hover {
+                overflow: visible;
+                z-index: 1;
+            }
+
             > .title {
                 font-weight: bold;
+                background-color: inherit;
 
                 &:after {
                     content: ": ";
@@ -30,7 +39,7 @@
             }
 
             > .time {
-
+                background-color: inherit;
             }
         }
     }

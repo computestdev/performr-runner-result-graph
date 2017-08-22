@@ -13,6 +13,10 @@ const isOverlappingLine = (line, begin, end) => {
         if (end > otherBegin && end < otherEnd) {
             return true;
         }
+
+        if (begin - otherBegin < 250) {
+            return true;
+        }
     }
 
     return false;
