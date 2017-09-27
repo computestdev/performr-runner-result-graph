@@ -21,31 +21,37 @@
   "license": "MIT",
   "homepage": "https://github.com/Joris-van-der-Wel/performr-runner-result-graph",
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-jest": "^20.0.3",
-    "babel-loader": "^7.1.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-helpers": "^6.24.1",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-strict-mode": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "chai": "^4.0.2",
-    "css-loader": "^0.28.4",
-    "enzyme": "^2.9.0",
-    "eslint": "^4.0.0",
-    "eslint-loader": "^1.8.0",
-    "eslint-plugin-import": "^2.5.0",
-    "eslint-plugin-jsx-a11y": "^5.0.3",
-    "eslint-plugin-react": "^7.1.0",
-    "jest": "^20.0.4",
+    "chai": "^4.1.2",
+    "css-loader": "^0.28.7",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-16": "^1.0.0",
+    "eslint": "^4.7.2",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "jest": "^21.2.0",
+    "loader-utils": "^1.1.0",
+    "memory-fs": "^0.4.1",
     "node-sass": "^4.5.3",
-    "react": "^15.6.1",
-    "react-addons-test-utils": "^15.6.0",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.0.0",
+    "react-test-renderer": "^16.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0"
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.0"
   },
   "peerDependencies": {
     "react": "^15.3.2"
@@ -53,12 +59,15 @@
   "dependencies": {
     "immutable": "^3.8.1",
     "moment": "^2.16.0",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.6.0",
     "react-immutable-proptypes": "^2.1.0",
-    "react-redux": "^5.0.5",
-    "redux": "^3.7.0"
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   },
   "jest": {
+    "setupFiles": [
+      "./test/setup.js"
+    ],
     "testEnvironment": "jsdom",
     "testPathDirs": [
       "test"

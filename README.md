@@ -79,8 +79,8 @@ This package contains a webpack [UMD](https://github.com/forbeslindesay/umd#umd)
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="node_modules/react/dist/react.js"></script>
-  <script src="node_modules/react-dom/dist/react-dom.js"></script>
+  <script src="node_modules/react/umd/react.development.js"></script>
+  <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
   <script src="node_modules/performr-runner-result-graph/bundle.js"></script>
   <style>
     #upload {
