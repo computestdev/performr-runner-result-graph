@@ -14,27 +14,22 @@ const myReducers = (state = new ImmutableMap(), action) => {
     ;
 };
 
-const instanceReducer = (instanceKey, state = new ImmutableMap(), action) => {
+export const createInstanceReducer = instanceKey => (state = new ImmutableMap(), action) => {
     if (instanceKey !== action.instanceKey && action.type !== '@@INIT') {
         return state;
     }
 
-    return state.set(instanceKey, myReducers(state.get(instanceKey), action));
+    return myReducers(state, action);
 };
 
-const rootReducer = (instanceKey, state = {}, action) => {
-    if (ImmutableMap.isMap(state)) {
-        return state.set('PerformrRunnerResultGraph', instanceReducer(instanceKey, state.get('PerformrRunnerResultGraph'), action));
-    }
+export const createRootReducer = instanceKeys => {
+    const reducers = [...instanceKeys].map(key => [key, createInstanceReducer(key)]);
 
-    // assume it is a pojo
-    return Object.assign({}, state, {
-        PerformrRunnerResultGraph: instanceReducer(instanceKey, state.PerformrRunnerResultGraph, action),
+    return (oldState = new ImmutableMap(), action) => oldState.withMutations(state => {
+        for (const [key, reducer] of reducers) {
+            state.set(key, reducer(oldState.get(key), action));
+        }
     });
 };
 
-const createRootReducer = instanceKey => {
-    return rootReducer.bind(null, instanceKey);
-};
-
-export default createRootReducer;
+export const stateKey = 'PerformrRunnerResultGraph';

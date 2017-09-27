@@ -26,17 +26,22 @@
         <div id="demo-container"></div>
         <script>
             const render = resultObject => {
-                window.myResultObject = PerformrRunnerResultGraph.parseResultObject(resultObject.result);
+                const {parseResultObject, createRootReducer, stateKey, default: PerformrRunnerResultGraphComponent} = PerformrRunnerResultGraph;
+
+                window.myResultObject = parseResultObject(resultObject.result);
+                const instanceKey = 'foo';
 
                 window.myStore = Redux.createStore(
-                    PerformrRunnerResultGraph.createReducer('foo'),
+                    Redux.combineReducers({
+                        [stateKey]: createRootReducer([instanceKey]),
+                    }),
                     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
                 );
 
-                window.myResultGraph = React.createElement(PerformrRunnerResultGraph.default, {
+                window.myResultGraph = React.createElement(PerformrRunnerResultGraphComponent, {
                     resultObject: window.myResultObject,
                     store: window.myStore,
-                    instanceKey: 'foo',
+                    instanceKey,
                 });
 
                 const container = document.querySelector('#demo-container');

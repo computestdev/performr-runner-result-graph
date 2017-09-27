@@ -58,22 +58,17 @@ class BigApp extends Component {
 }
 ```
 
-You will also have to set up a reducer for this component:
+You will also have to integrate the reducer for this component:
 ```javascript
-import {createStore} from 'redux';
-import {createReducer as createResultGraphReducer} from 'performr-runner-result-graph';
-import myReducer from './reducers';
+import {combineReducers} from 'redux';
+import {createRootReducer as createGraphReducer, stateKey as graphStateKey} from 'performr-runner-result-graph';
 
-// 'foo' is the instanceKey
-const resultGraphReducerFoo = createResultGraphReducer('foo');
-const myStore = createStore((state = {}, action) => {
-    let newState = state;
-    newState = myReducer(state, action);
-    newState = resultGraphReducerFoo(state, action);
-    return newState;
+import someOtherReducer from './someOtherReducer';
+
+const mainReducer = combineReducers({
+    [graphStateKey]: createGraphReducer(['foo']),
+    someOtherReducer,
 });
-
-const myApp = <BigApp store={myStore}/>;
 ```
 
 
@@ -83,44 +78,72 @@ This package contains a webpack [UMD](https://github.com/forbeslindesay/umd#umd)
 ```HTML
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="node_modules/react/dist/react.js"></script>
-    <script src="node_modules/react-dom/dist/react-dom.js"></script>
-    <script src="node_modules/performr-runner-result-graph/bundle.js"></script>
-    <style>
-      #upload { position: absolute; top: 0; left: 0; z-index: 1; }
-      #demo-container > .PerformrRunnerResultGraph { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
-    </style>
-  </head>
-  <body>
-    <input id="upload" type="file"/>
-    <div id="demo-container"></div>
-    <script>
-      const render = resultObject => {
-        window.currentResultObject = PerformrRunnerResultGraph.parseResultObject(resultObject);
-        window.currentResultGraph = React.createElement(PerformrRunnerResultGraph.default, {resultObject: window.currentResultObject})
-        ReactDOM.render(
-          window.currentResultGraph,
-          document.querySelector('#demo-container')
-        );
-      };
+<head>
+  <script src="node_modules/react/dist/react.js"></script>
+  <script src="node_modules/react-dom/dist/react-dom.js"></script>
+  <script src="node_modules/performr-runner-result-graph/bundle.js"></script>
+  <style>
+    #upload {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    #demo-container > .PerformrRunnerResultGraph {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+        bottom: 0;
+    }
+  </style>
+</head>
+<body>
+<input id="upload" type="file"/>
+<div id="demo-container"></div>
+<script>
+  const render = resultObject => {
+    const {parseResultObject, default: PerformrRunnerResultGraphComponent} = PerformrRunnerResultGraph;
 
-      document.querySelector('#upload').addEventListener('change', e => {
-        const {files} = e.target;
+    window.myResultObject = parseResultObject(resultObject.result);
+    const instanceKey = 'foo';
 
-        if (!files.length) {
-          return;
-        }
+    window.myResultGraph = React.createElement(PerformrRunnerResultGraphComponent, {
+      resultObject: window.myResultObject,
+      instanceKey,
+    });
 
-        const reader = new FileReader();
-        reader.onload = () => {
-          const resultObject = JSON.parse(reader.result);
-          render(resultObject);
-        };
-        reader.readAsText(files[0]);
-      });
-    </script>
-  </body>
+    const container = document.querySelector('#demo-container');
+    ReactDOM.unmountComponentAtNode(container);
+    ReactDOM.render(
+      window.myResultGraph,
+      container
+    );
+  };
+
+  document.querySelector('#upload').addEventListener('change', e => {
+    const {files} = e.target;
+
+    if (!files.length) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        ReactDOM.unmountComponentAtNode(document.querySelector('#demo-container'));
+        const resultObject = JSON.parse(reader.result);
+        render(resultObject);
+      }
+      catch (err) {
+        console.error('Parsing failed', err);
+      }
+    };
+    reader.readAsText(files[0]);
+  });
+</script>
+</body>
 </html>
+
 
 ```

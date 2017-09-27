@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import style from './PerformrRunnerResultGraph.scss';
 import ResultGraph from './components/ResultGraph';
-import createReducer from './reducers';
+import {createInstanceReducer, createRootReducer, stateKey} from './reducers';
 import Config from './Config';
 
 // this module is the main export for this package
 
-export {createReducer};
+export {createInstanceReducer, createRootReducer, stateKey};
 
 const buildEventLookupMap = (mapArg, events) => {
     let map = mapArg;
@@ -75,14 +75,18 @@ export default class PerformrRunnerResultGraph extends Component {
     }
 
     render() {
+        const {instanceKey} = this.props;
+
         if (!this.props.store && !this._defaultStoreCached) {
-            this._defaultStoreCached = createStore(createReducer(this.props.instanceKey), new Immutable.Map());
+            this._defaultStoreCached = createStore(combineReducers({
+                [stateKey]: createRootReducer([instanceKey]),
+            }));
         }
 
         // Immutable.js returns the same object in set() if the value has not changed,
         // so caching the config here makes sure our pure components do not have to re-render
         this._configCached = this._configCached
-        .set('instanceKey', this.props.instanceKey)
+        .set('instanceKey', instanceKey)
         .set('resultObject', this.props.resultObject)
         .set('store', this.props.store || this._defaultStoreCached);
 
