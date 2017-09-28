@@ -113,10 +113,14 @@ PerformrRunnerResultGraph.propTypes = {
     instanceKey: PropTypes.any.isRequired,
     pixelsPerMillisecond: PropTypes.number.isRequired,
 
-    // not an exhaustive check, but it should catch most mistakes:
+    // not an exhaustive check, but it should catch most mistakes.s
+    // especially eventMap and transactionMap are useful checks since they make
+    // sure that `parseResultObject` is used instead of immutable.fromJS()
     resultObject: ImmutablePropTypes.mapContains({
+        eventMap: ImmutablePropTypes.map.isRequired,
         events: ImmutablePropTypes.list.isRequired,
         timing: ImmutablePropTypes.map.isRequired,
+        transactionMap: ImmutablePropTypes.map.isRequired,
         transactions: ImmutablePropTypes.list.isRequired,
     }).isRequired,
 
