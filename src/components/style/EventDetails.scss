@@ -2,6 +2,8 @@
 
 .PerformrRunnerResultGraph .EventDetails {
     position: relative;
+    background-color: #fafafa;
+    padding: 20px;
 
     > .CloseButton {
         float: right;
@@ -21,7 +23,7 @@
         margin: 1em 0;
         display: flex;
         flex-direction: row;
-        border-top: 1px solid #777777;
+        border-top: 1px solid #e4e4e4;
 
         $padding: 10px;
 
@@ -29,7 +31,7 @@
             width: $PerformrRunnerResultGraph_leftColumnWidth - $padding * 2 - 1px;
             padding: $padding;
             flex: 0 0 auto;
-            border-right: 1px solid #777777;
+            border-right: 1px solid #e4e4e4;
         }
 
         > .EventMetaDataTable {

@@ -75,7 +75,12 @@ export default class PerformrRunnerResultGraph extends Component {
     }
 
     render() {
-        const {instanceKey} = this.props;
+        const {instanceKey, resultObject} = this.props;
+        
+        // Calculate pixelsPerMillisecond
+        // (PLOT_EXTRA_PIXELS + PerformrRunnerResultGraph_leftColumnWidth) should be subtracted from the available width
+        const duration = parseInt(resultObject.getIn(['timing', 'duration']), 0);
+        const pixelsPerMillisecond = (screen.availWidth  - 375) / duration;
 
         if (!this.props.store && !this._defaultStoreCached) {
             this._defaultStoreCached = createStore(combineReducers({
@@ -87,14 +92,14 @@ export default class PerformrRunnerResultGraph extends Component {
         // so caching the config here makes sure our pure components do not have to re-render
         this._configCached = this._configCached
         .set('instanceKey', instanceKey)
-        .set('resultObject', this.props.resultObject)
+        .set('resultObject', resultObject)
         .set('store', this.props.store || this._defaultStoreCached);
 
         return (
             <div className="PerformrRunnerResultGraph">
                 <ResultGraph
                     config={this._configCached}
-                    pixelsPerMillisecond={this.props.pixelsPerMillisecond}
+                    pixelsPerMillisecond={pixelsPerMillisecond}
                 />
             </div>
         );
@@ -103,7 +108,6 @@ export default class PerformrRunnerResultGraph extends Component {
 
 PerformrRunnerResultGraph.defaultProps = {
     instanceKey: 'default',
-    pixelsPerMillisecond: 1 / 5, // 1s = 200px
     store: null,
 };
 

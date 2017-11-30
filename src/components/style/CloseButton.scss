@@ -1,15 +1,19 @@
 .PerformrRunnerResultGraph .CloseButton {
     background: transparent;
     border: none;
-    color: blue;
+    color: #a7a7a7;
+    font-weight: bold;
     cursor: pointer;
     padding: 3px 6px;
+    margin-top: -5px;
 
     &:hover {
         text-decoration: underline;
     }
 
     &:after {
-        content: ' x';
+        vertical-align: bottom;
+        line-height: 10px;
+        content: ' ❌';
     }
 }

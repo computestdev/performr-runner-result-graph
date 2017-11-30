@@ -59,6 +59,12 @@
 
     &.expanded > .children {
         display: block;
+        -webkit-box-shadow: inset 8px -8px 6px -6px  rgba(0,0,0,0.33), inset 8px 8px 6px -6px  rgba(0,0,0,0.26);
+        -moz-box-shadow: inset 8px -8px 6px -6px  rgba(0,0,0,0.33), inset 8px 8px 6px -6px  rgba(0,0,0,0.26);
+        box-shadow: inset 8px -8px 6px -6px  rgba(0,0,0,0.33), inset 8px 8px 6px -6px  rgba(0,0,0,0.26);
+        background-color: rgba(0,0,0,0.01);
+        padding-top: $PerformrRunnerResultGraph_eventPlotHeight;
+        padding-bottom: $PerformrRunnerResultGraph_eventPlotHeight;
     }
 
     &.expanded > .title {
@@ -71,5 +77,7 @@
 
     &.selected > .title {
         background-color: $PerformrRunnerResultGraph_eventPlotSelectedColor;
+        border: 1px solid $PerformrRunnerResultGraph_eventPlotSelectedColorBorder;
+        border-right: none;
     }
 }
