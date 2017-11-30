@@ -76,7 +76,7 @@ export default class PerformrRunnerResultGraph extends Component {
 
     render() {
         const {instanceKey, resultObject} = this.props;
-        
+
         // Calculate pixelsPerMillisecond
         // (PLOT_EXTRA_PIXELS + PerformrRunnerResultGraph_leftColumnWidth) should be subtracted from the available width
         const duration = parseInt(resultObject.getIn(['timing', 'duration']), 0);
@@ -115,7 +115,6 @@ PerformrRunnerResultGraph.propTypes = {
     // The instanceKey us used as a key for Immutable.Map, but also in strict equality checks
     // (e.g. foo.instanceKey === bar.instanceKey)
     instanceKey: PropTypes.any.isRequired,
-    pixelsPerMillisecond: PropTypes.number.isRequired,
 
     // not an exhaustive check, but it should catch most mistakes.s
     // especially eventMap and transactionMap are useful checks since they make
