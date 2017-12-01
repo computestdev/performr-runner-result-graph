@@ -44,16 +44,16 @@ export default class EventPlotColumn extends PureComponent {
             '90deg',
             'transparent 0',
             `transparent ${pixelsPerSecond - 2}px`,
-            `#777777 ${pixelsPerSecond - 2}px`,
-            `#777777 ${pixelsPerSecond}px`,
+            `#f2f2f2 ${pixelsPerSecond - 2}px`,
+            `#f2f2f2 ${pixelsPerSecond}px`,
         ];
 
         const minorGrid = [
             '90deg',
             'transparent 0',
             `transparent ${pixelsPerDecisecond - 1}px`,
-            `#999999 ${pixelsPerDecisecond - 1}px`,
-            `#999999 ${pixelsPerDecisecond}px`,
+            `#f2f2f2 ${pixelsPerDecisecond - 1}px`,
+            `#f2f2f2 ${pixelsPerDecisecond}px`,
         ];
 
         return (

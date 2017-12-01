@@ -7,14 +7,14 @@
                 > th {
                     text-align: left;
                     vertical-align: top;
-                    font-family: monospace;
                 }
 
                 > td {
-                    font-family: monospace;
                     vertical-align: top;
                     word-break: break-all;
                     white-space: pre-wrap;
+                    line-height: 1.1rem;
+                    padding-bottom: 0.4rem;
 
                     > .line {
                         text-indent: 3em hanging;

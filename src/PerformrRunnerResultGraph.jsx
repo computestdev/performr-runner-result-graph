@@ -75,7 +75,12 @@ export default class PerformrRunnerResultGraph extends Component {
     }
 
     render() {
-        const {instanceKey} = this.props;
+        const {instanceKey, resultObject, width} = this.props;
+
+        const duration = resultObject.getIn(['timing', 'duration']);
+
+        // Todo: calculate the subtracted width
+        const pixelsPerMillisecond = (width - 375) / duration;
 
         if (!this.props.store && !this._defaultStoreCached) {
             this._defaultStoreCached = createStore(combineReducers({
@@ -87,14 +92,14 @@ export default class PerformrRunnerResultGraph extends Component {
         // so caching the config here makes sure our pure components do not have to re-render
         this._configCached = this._configCached
         .set('instanceKey', instanceKey)
-        .set('resultObject', this.props.resultObject)
+        .set('resultObject', resultObject)
         .set('store', this.props.store || this._defaultStoreCached);
 
         return (
             <div className="PerformrRunnerResultGraph">
                 <ResultGraph
                     config={this._configCached}
-                    pixelsPerMillisecond={this.props.pixelsPerMillisecond}
+                    pixelsPerMillisecond={pixelsPerMillisecond}
                 />
             </div>
         );
@@ -103,15 +108,14 @@ export default class PerformrRunnerResultGraph extends Component {
 
 PerformrRunnerResultGraph.defaultProps = {
     instanceKey: 'default',
-    pixelsPerMillisecond: 1 / 5, // 1s = 200px
     store: null,
+    width: 900,
 };
 
 PerformrRunnerResultGraph.propTypes = {
     // The instanceKey us used as a key for Immutable.Map, but also in strict equality checks
     // (e.g. foo.instanceKey === bar.instanceKey)
     instanceKey: PropTypes.any.isRequired,
-    pixelsPerMillisecond: PropTypes.number.isRequired,
 
     // not an exhaustive check, but it should catch most mistakes.s
     // especially eventMap and transactionMap are useful checks since they make
@@ -123,6 +127,6 @@ PerformrRunnerResultGraph.propTypes = {
         transactionMap: ImmutablePropTypes.map.isRequired,
         transactions: ImmutablePropTypes.list.isRequired,
     }).isRequired,
-
     store: PropTypes.object,
+    width: PropTypes.number,
 };
