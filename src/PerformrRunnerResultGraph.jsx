@@ -78,7 +78,9 @@ export default class PerformrRunnerResultGraph extends Component {
         const {instanceKey, resultObject, width} = this.props;
 
         const duration = resultObject.getIn(['timing', 'duration']);
-        const pixelsPerMillisecond = width / duration;
+
+        // Todo: calculate the subtracted width
+        const pixelsPerMillisecond = (width - 375) / duration;
 
         if (!this.props.store && !this._defaultStoreCached) {
             this._defaultStoreCached = createStore(combineReducers({
@@ -107,7 +109,7 @@ export default class PerformrRunnerResultGraph extends Component {
 PerformrRunnerResultGraph.defaultProps = {
     instanceKey: 'default',
     store: null,
-    width: 600,
+    width: 900,
 };
 
 PerformrRunnerResultGraph.propTypes = {
@@ -126,5 +128,5 @@ PerformrRunnerResultGraph.propTypes = {
         transactions: ImmutablePropTypes.list.isRequired,
     }).isRequired,
     store: PropTypes.object,
-    width: React.PropTypes.number,
+    width: PropTypes.number,
 };
