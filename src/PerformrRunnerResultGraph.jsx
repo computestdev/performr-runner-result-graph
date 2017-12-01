@@ -75,12 +75,10 @@ export default class PerformrRunnerResultGraph extends Component {
     }
 
     render() {
-        const {instanceKey, resultObject} = this.props;
+        const {instanceKey, resultObject, width} = this.props;
 
-        // Calculate pixelsPerMillisecond
-        // (PLOT_EXTRA_PIXELS + PerformrRunnerResultGraph_leftColumnWidth) should be subtracted from the available width
-        const duration = parseInt(resultObject.getIn(['timing', 'duration']), 0);
-        const pixelsPerMillisecond = (screen.availWidth  - 375) / duration;
+        const duration = resultObject.getIn(['timing', 'duration']);
+        const pixelsPerMillisecond = width / duration;
 
         if (!this.props.store && !this._defaultStoreCached) {
             this._defaultStoreCached = createStore(combineReducers({
@@ -109,6 +107,7 @@ export default class PerformrRunnerResultGraph extends Component {
 PerformrRunnerResultGraph.defaultProps = {
     instanceKey: 'default',
     store: null,
+    width: 600,
 };
 
 PerformrRunnerResultGraph.propTypes = {
@@ -126,6 +125,6 @@ PerformrRunnerResultGraph.propTypes = {
         transactionMap: ImmutablePropTypes.map.isRequired,
         transactions: ImmutablePropTypes.list.isRequired,
     }).isRequired,
-
     store: PropTypes.object,
+    width: React.PropTypes.number,
 };
