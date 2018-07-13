@@ -4,7 +4,7 @@ import {createStore, combineReducers} from 'redux';
 import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
-import style from './PerformrRunnerResultGraph.scss';
+import style from './PerformrRunnerResultGraph.less';
 import ResultGraph from './components/ResultGraph';
 import {createInstanceReducer, createRootReducer, stateKey} from './reducers';
 import Config from './Config';

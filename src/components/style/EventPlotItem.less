@@ -1,18 +1,18 @@
-@import "./defaultTheme.scss";
+@import "./defaultTheme.less";
 
 .PerformrRunnerResultGraph {
     .EventPlotItem {
         position: relative;
 
         > .plotWrap {
-            height: $PerformrRunnerResultGraph_eventPlotHeight;
+            height: @PerformrRunnerResultGraph_eventPlotHeight;
 
             > .plot {
                 position: absolute;
                 top: 1px;
-                height: $PerformrRunnerResultGraph_eventPlotHeight - 2px;
+                height: @PerformrRunnerResultGraph_eventPlotHeight - 2px;
                 // left and width are set by script
-                background: $PerformrRunnerResultGraph_eventPlotColor;
+                background: @PerformrRunnerResultGraph_eventPlotColor;
 
                 > .time {
                     position: absolute;
@@ -32,26 +32,26 @@
             display: block;
             box-shadow: inset -8px -8px 6px -6px  rgba(0,0,0,0.33), inset -8px 8px 6px -6px  rgba(0,0,0,0.26);
             background-color: rgba(0,0,0,0.01);
-            padding-top: $PerformrRunnerResultGraph_eventPlotHeight;
-            padding-bottom: $PerformrRunnerResultGraph_eventPlotHeight;
+            padding-top: @PerformrRunnerResultGraph_eventPlotHeight;
+            padding-bottom: @PerformrRunnerResultGraph_eventPlotHeight;
         }
 
         &.selected > .plotWrap {
-            background-color: $PerformrRunnerResultGraph_eventPlotSelectedColor;
-            border: 1px solid $PerformrRunnerResultGraph_eventPlotSelectedColorBorder;
+            background-color: @PerformrRunnerResultGraph_eventPlotSelectedColor;
+            border: 1px solid @PerformrRunnerResultGraph_eventPlotSelectedColorBorder;
             border-left: none;
         }
     }
 
     .EventPlotItem .EventPlotItem > .plotWrap > .plot {
-        background: lighten($PerformrRunnerResultGraph_eventPlotColor, 25%);
+        background: lighten(@PerformrRunnerResultGraph_eventPlotColor, 25%);
     }
 
     .EventPlotItem .EventPlotItem .EventPlotItem > .plotWrap > .plot {
-        background: lighten($PerformrRunnerResultGraph_eventPlotColor, 50%);
+        background: lighten(@PerformrRunnerResultGraph_eventPlotColor, 50%);
     }
 
     .EventPlotItem .EventPlotItem .EventPlotItem .EventPlotItem > .plotWrap > .plot {
-        background: lighten($PerformrRunnerResultGraph_eventPlotColor, 75%);
+        background: lighten(@PerformrRunnerResultGraph_eventPlotColor, 75%);
     }
 }

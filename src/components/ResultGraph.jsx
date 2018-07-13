@@ -9,7 +9,7 @@ import EventPlotColumnContainer from '../containers/EventPlotColumn';
 import SelectedEventDetailsContainer from '../containers/SelectedEventDetails';
 import NativeScrollXInput from './NativeScrollXInput';
 import ScreenshotPopupContainer from '../containers/ScreenshotPopup';
-import style from './style/ResultGraph.scss';
+import style from './style/ResultGraph.less';
 
 export default class ResultGraph extends PureComponent {
     constructor(props) {

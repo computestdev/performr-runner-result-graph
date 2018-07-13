@@ -5,15 +5,15 @@
     pointer-events: none;
 
     > .plotWrap {
-        height: $PerformrRunnerResultGraph_transactionPlotHeight;
+        height: @PerformrRunnerResultGraph_transactionPlotHeight;
 
         > button.plot {
             pointer-events: auto;
             position: absolute;
             top: 1px;
-            height: $PerformrRunnerResultGraph_transactionPlotHeight - 2px;
+            height: @PerformrRunnerResultGraph_transactionPlotHeight - 2px;
             // left and width are set by script
-            background: $PerformrRunnerResultGraph_transactionPlotColorOdd;
+            background: @PerformrRunnerResultGraph_transactionPlotColorOdd;
             text-align: center;
             white-space: nowrap; // Prevent time from writing to next line
             overflow: hidden;
@@ -45,6 +45,6 @@
     }
 
     &:nth-child(even) > .plotWrap > .plot {
-        background: $PerformrRunnerResultGraph_transactionPlotColorEven;
+        background: @PerformrRunnerResultGraph_transactionPlotColorEven;
     }
 }

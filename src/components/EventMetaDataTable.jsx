@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
-import style from './style/EventMetaDataTable.scss';
+import style from './style/EventMetaDataTable.less';
 
 export default class EventMetaDataTable extends PureComponent {
     constructor(props) {

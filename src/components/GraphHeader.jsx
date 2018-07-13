@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import PlotHeader from './PlotHeader';
-import style from './style/GraphHeader.scss';
+import style from './style/GraphHeader.less';
 
 export default class GraphHeader extends PureComponent {
     constructor(props) {

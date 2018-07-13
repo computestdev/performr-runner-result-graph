@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import EventTree from './EventTree';
-import style from './style/EventTreeItem.scss';
+import style from './style/EventTreeItem.less';
 
 export default class EventTreeItem extends PureComponent {
     constructor(props) {

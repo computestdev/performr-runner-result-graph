@@ -1,9 +1,9 @@
-@import "./defaultTheme.scss";
+@import "./defaultTheme.less";
 
 .PerformrRunnerResultGraph .EventTreeItem {
     > .title {
         position: relative;
-        height: $PerformrRunnerResultGraph_eventPlotHeight;
+        height: @PerformrRunnerResultGraph_eventPlotHeight;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -11,7 +11,7 @@
 
         > button.expandButton {
             width: 20px;
-            height: $PerformrRunnerResultGraph_eventPlotHeight;
+            height: @PerformrRunnerResultGraph_eventPlotHeight;
             display: inline-flex;
             position: absolute;
             top: 0;
@@ -42,7 +42,7 @@
             vertical-align: middle;
             line-height: 1;
             display: block;
-            height: $PerformrRunnerResultGraph_eventPlotHeight;
+            height: @PerformrRunnerResultGraph_eventPlotHeight;
             border: none;
             padding: 0 0 0 20px;
             background: transparent;
@@ -61,8 +61,8 @@
         display: block;
         box-shadow: inset 8px -8px 6px -6px  rgba(0,0,0,0.33), inset 8px 8px 6px -6px  rgba(0,0,0,0.26);
         background-color: rgba(0,0,0,0.01);
-        padding-top: $PerformrRunnerResultGraph_eventPlotHeight;
-        padding-bottom: $PerformrRunnerResultGraph_eventPlotHeight;
+        padding-top: @PerformrRunnerResultGraph_eventPlotHeight;
+        padding-bottom: @PerformrRunnerResultGraph_eventPlotHeight;
     }
 
     &.expanded > .title {
@@ -74,8 +74,8 @@
     }
 
     &.selected > .title {
-        background-color: $PerformrRunnerResultGraph_eventPlotSelectedColor;
-        border: 1px solid $PerformrRunnerResultGraph_eventPlotSelectedColorBorder;
+        background-color: @PerformrRunnerResultGraph_eventPlotSelectedColor;
+        border: 1px solid @PerformrRunnerResultGraph_eventPlotSelectedColorBorder;
         border-right: none;
     }
 }

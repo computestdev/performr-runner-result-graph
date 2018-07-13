@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import style from './style/NativeScrollXInput.scss';
+import style from './style/NativeScrollXInput.less';
 
 export default class NativeScrollXInput extends PureComponent {
     constructor(props) {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Screenshot from './Screenshot';
 import CloseButton from './CloseButton';
-import style from './style/ScreenshotPopup.scss';
+import style from './style/ScreenshotPopup.less';
 
 export default class ScreenshotPopup extends PureComponent {
     // eslint-disable-next-line camelcase

@@ -4,7 +4,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import getScriptPlotWidth from '../getScriptPlotWidth';
 import EventPlot from './EventPlot';
-import style from './style/EventPlotColumn.scss';
+import style from './style/EventPlotColumn.less';
 
 export default class EventPlotColumn extends PureComponent {
     constructor(props) {

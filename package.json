@@ -41,12 +41,12 @@
     "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-react": "^7.10.0",
     "jest": "^23.4.0",
+    "less": "^3.7.1",
+    "less-loader": "^4.1.0",
     "loader-utils": "^1.1.0",
     "memory-fs": "^0.4.1",
-    "node-sass": "^4.5.3",
     "react": "^16.4.1",
     "react-addons-test-utils": "^15.6.2",
-    "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "react-dom": "^16.4.1",
     "react-test-renderer": "^16.4.1",
@@ -75,7 +75,7 @@
     ],
     "transform": {
       "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.s?css$": "<rootDir>/sass-jest-transform.js"
+      "^.+\\.(css|less)$": "<rootDir>/less-jest-transform.js"
     },
     "verbose": true
   }

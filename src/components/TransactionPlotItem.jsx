@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
-import style from './style/TransactionPlotItem.scss';
+import style from './style/TransactionPlotItem.less';
 
 export default class TransactionPlotItem extends PureComponent {
     constructor(props) {

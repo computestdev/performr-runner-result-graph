@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import style from './style/CloseButton.scss';
+import style from './style/CloseButton.less';
 
 export default class CloseButton extends PureComponent {
     constructor(props) {

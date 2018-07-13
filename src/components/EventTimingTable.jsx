@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import moment from 'moment';
 
-import style from './style/EventTimingTable.scss';
+import style from './style/EventTimingTable.less';
 
 export default class EventTimingTable extends PureComponent {
     constructor(props) {

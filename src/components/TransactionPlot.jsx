@@ -5,7 +5,7 @@ import Immutable from 'immutable';
 
 import TransactionPlotItemContainer from '../containers/TransactionPlotItem';
 import balanceEntitiesOverPlotLines from '../balanceEntitiesOverPlotLines';
-import style from './style/TransactionPlot.scss';
+import style from './style/TransactionPlot.less';
 
 export default class TransactionPlot extends PureComponent {
     constructor(props) {

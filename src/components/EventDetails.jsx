@@ -5,7 +5,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import EventTimingTable from './EventTimingTable';
 import EventMetaDataTable from './EventMetaDataTable';
 import CloseButton from './CloseButton';
-import style from './style/EventDetails.scss';
+import style from './style/EventDetails.less';
 
 export default class EventDetails extends PureComponent {
     constructor(props) {

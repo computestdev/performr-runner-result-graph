@@ -4,7 +4,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import getScriptPlotWidth from '../getScriptPlotWidth';
 import EventPlot from './EventPlot';
-import style from './style/EventPlotItem.scss';
+import style from './style/EventPlotItem.less';
 
 const ELLIPSIS = '\u2026';
 

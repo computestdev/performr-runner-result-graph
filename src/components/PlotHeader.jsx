@@ -4,7 +4,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import getScriptPlotWidth from '../getScriptPlotWidth';
 import TransactionPlot from './TransactionPlot';
-import style from './style/PlotHeader.scss';
+import style from './style/PlotHeader.less';
 
 export default class PlotHeader extends PureComponent {
     constructor(props) {

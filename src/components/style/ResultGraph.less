@@ -31,26 +31,26 @@
                 background: repeating-linear-gradient(
                     180deg,
                     transparent 0,
-                    transparent #{$PerformrRunnerResultGraph_eventPlotHeight},
-                    rgba(0,0,0,0.05) #{$PerformrRunnerResultGraph_eventPlotHeight},
-                    rgba(0,0,0,0.05) #{$PerformrRunnerResultGraph_eventPlotHeight * 2}
+                    transparent @PerformrRunnerResultGraph_eventPlotHeight,
+                    rgba(0,0,0,0.05) @PerformrRunnerResultGraph_eventPlotHeight,
+                    rgba(0,0,0,0.05) (@PerformrRunnerResultGraph_eventPlotHeight * 2)
                 );
 
                 > .EventTreeColumn {
-                    width: $PerformrRunnerResultGraph_leftColumnWidth;
+                    width: @PerformrRunnerResultGraph_leftColumnWidth;
                     flex: 0 0 auto;
                     overflow: hidden;
                 }
 
                 > .EventPlotColumn {
-                    width: calc(100% - #{$PerformrRunnerResultGraph_leftColumnWidth});
+                    width: ~ "calc(100% - @{PerformrRunnerResultGraph_leftColumnWidth})";
                     flex: 0 0 auto;
                 }
 
                 > .EventTreeColumn > .EventTree,
                 > .EventPlotColumn > .scroller > .scrollArea > .EventPlot {
                     // always render at least 25 event rows; otherwise the user might think the GUI is broken
-                    min-height: $PerformrRunnerResultGraph_eventPlotHeight * 25;
+                    min-height: @PerformrRunnerResultGraph_eventPlotHeight * 25;
                 }
             }
         }

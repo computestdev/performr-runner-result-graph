@@ -1,4 +1,4 @@
-@import "./defaultTheme.scss";
+@import "./defaultTheme.less";
 
 .PerformrRunnerResultGraph .EventDetails {
     position: relative;
@@ -25,18 +25,18 @@
         flex-direction: row;
         border-top: 1px solid #e4e4e4;
 
-        $padding: 10px;
+        @padding: 10px;
 
         > .EventTimingTable {
-            width: $PerformrRunnerResultGraph_leftColumnWidth - $padding * 2 - 1px;
-            padding: $padding;
+            width: @PerformrRunnerResultGraph_leftColumnWidth - @padding * 2 - 1px;
+            padding: @padding;
             flex: 0 0 auto;
             border-right: 1px solid #e4e4e4;
         }
 
         > .EventMetaDataTable {
-            padding: $padding;
-            width: calc(100% - #{$PerformrRunnerResultGraph_leftColumnWidth} - #{$padding * 2});
+            padding: @padding;
+            width: ~ "calc(100% - @{PerformrRunnerResultGraph_leftColumnWidth} - @{padding} * 2})";
             flex: 0 0 auto;
         }
     }
