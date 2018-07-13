@@ -2,25 +2,10 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
-import style from './style/TransactionPlotItem.less';
-
 export default class TransactionPlotItem extends PureComponent {
     constructor(props) {
         super(props);
         this.handlePlotClick = this.handlePlotClick.bind(this);
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     get transactionId() {

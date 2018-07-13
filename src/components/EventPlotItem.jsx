@@ -4,26 +4,12 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import getScriptPlotWidth from '../getScriptPlotWidth';
 import EventPlot from './EventPlot';
-import style from './style/EventPlotItem.less';
 
 const ELLIPSIS = '\u2026';
 
 export default class EventPlotItem extends PureComponent {
     constructor(props) {
         super(props);
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     get eventChildren() {

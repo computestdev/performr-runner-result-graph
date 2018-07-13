@@ -1,7 +1,0 @@
-/node_modules
-/performr-runner-result-graph.iml
-/.idea
-/PRIV
-*.xpi
-npm-debug.log
-/coverage

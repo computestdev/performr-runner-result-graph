@@ -1,25 +1,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import style from './style/CloseButton.less';
-
 export default class CloseButton extends PureComponent {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     handleClick(e) {

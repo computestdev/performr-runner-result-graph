@@ -2,8 +2,6 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
-import style from './style/EventMetaDataTable.less';
-
 export default class EventMetaDataTable extends PureComponent {
     constructor(props) {
         super(props);
@@ -11,19 +9,6 @@ export default class EventMetaDataTable extends PureComponent {
         this.handleViewScreenshotButton = () => {
             this.props.onSelectScreenshot(this.eventId);
         };
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     get eventId() {

@@ -4,7 +4,6 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import getScriptPlotWidth from '../getScriptPlotWidth';
 import TransactionPlot from './TransactionPlot';
-import style from './style/PlotHeader.less';
 
 export default class PlotHeader extends PureComponent {
     constructor(props) {
@@ -12,19 +11,6 @@ export default class PlotHeader extends PureComponent {
 
         this._scrollerNode = null;
         this._setScrollerNode = x => { this._scrollerNode = x; };
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     get scrollX() {

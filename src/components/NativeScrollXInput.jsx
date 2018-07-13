@@ -1,26 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import style from './style/NativeScrollXInput.less';
-
 export default class NativeScrollXInput extends PureComponent {
     constructor(props) {
         super(props);
         this._scrollerNode = null;
         this._setScrollerNode = x => { this._scrollerNode = x; };
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     get scrollX() {

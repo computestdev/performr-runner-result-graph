@@ -4,7 +4,6 @@ import {createStore, combineReducers} from 'redux';
 import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
-import style from './PerformrRunnerResultGraph.less';
 import ResultGraph from './components/ResultGraph';
 import {createInstanceReducer, createRootReducer, stateKey} from './reducers';
 import Config from './Config';
@@ -60,19 +59,6 @@ export default class PerformrRunnerResultGraph extends Component {
 
         this._configCached = new Config();
         this._defaultStoreCached = null;
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) { // in case "style-loader/useable" is used
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     render() {

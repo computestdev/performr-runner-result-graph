@@ -48,7 +48,7 @@ class BigApp extends Component {
         <SubApp/>
         <PerformrRunnerResultGraph
             instanceKey="foo"
-            resultObject={parsedSampleResult} 
+            resultObject={parsedSampleResult}
             store={this.props.store}
         />
         <SubApp/>
@@ -81,7 +81,8 @@ This package contains a webpack [UMD](https://github.com/forbeslindesay/umd#umd)
 <head>
   <script src="node_modules/react/umd/react.development.js"></script>
   <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
-  <script src="node_modules/performr-runner-result-graph/bundle.js"></script>
+  <script src="node_modules/performr-runner-result-graph/dist/bundle.js"></script>
+  <link rel="stylesheet" type="text/css" href="node_modules/performr-runner-result-graph/dist/bundle.css">
   <style>
     #upload {
       position: absolute;

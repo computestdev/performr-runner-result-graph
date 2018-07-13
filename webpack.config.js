@@ -1,4 +1,6 @@
 'use strict';
+/* eslint-env node */
+const path = require('path');
 
 module.exports = {
     devServer: {
@@ -24,23 +26,16 @@ module.exports = {
                 test: /\.jsx?$/,
                 use: ['babel-loader'],
             },
-            {
-                test: /\.less/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'less-loader',
-                ],
-            },
         ],
     },
     output: {
         filename: 'bundle.js',
         library: 'PerformrRunnerResultGraph',
         libraryTarget: 'umd',
-        path: __dirname,
+        path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
     },
+    plugins: [],
     resolve: {
         extensions: ['.js', '.jsx'],
     },

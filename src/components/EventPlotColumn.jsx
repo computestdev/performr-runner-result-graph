@@ -4,7 +4,6 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import getScriptPlotWidth from '../getScriptPlotWidth';
 import EventPlot from './EventPlot';
-import style from './style/EventPlotColumn.less';
 
 export default class EventPlotColumn extends PureComponent {
     constructor(props) {
@@ -12,19 +11,6 @@ export default class EventPlotColumn extends PureComponent {
 
         this._scrollerNode = null;
         this._setScrollerNode = x => { this._scrollerNode = x; };
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     get scrollX() {

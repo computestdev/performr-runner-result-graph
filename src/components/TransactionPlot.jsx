@@ -5,26 +5,12 @@ import Immutable from 'immutable';
 
 import TransactionPlotItemContainer from '../containers/TransactionPlotItem';
 import balanceEntitiesOverPlotLines from '../balanceEntitiesOverPlotLines';
-import style from './style/TransactionPlot.less';
 
 export default class TransactionPlot extends PureComponent {
     constructor(props) {
         super(props);
         this._transactionPositions = null;
         this.calculatePositions();
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     // eslint-disable-next-line camelcase

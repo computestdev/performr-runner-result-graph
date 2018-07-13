@@ -1,15 +1,23 @@
 {
   "name": "performr-runner-result-graph",
   "version": "5.0.0",
-  "description": "Display the event breakdown of a performr-runner script run as a pretty graph. Using React & Redux & SCSS",
+  "description": "Display the event breakdown of a performr-runner script run as a pretty graph. Using React & Redux & Less",
   "main": "src/PerformrRunnerResultGraph.jsx",
   "scripts": {
-    "prepublish": "webpack",
-    "start": "webpack-dev-server",
+    "prepublishOnly": "npm run build",
+    "build:css": "lessc --strict-imports --source-map --verbose src/PerformrRunnerResultGraph.less dist/bundle.css",
+    "build:js": "webpack --mode=production",
+    "build": "npm run build:css && npm run build:js",
+    "start": "set -ex\nwatch 'npm run build:css' src &\nwebpack-dev-server --mode=development",
     "lint": "eslint src test webpack.config.js --ext .js,.jsx",
     "pretest": "npm run lint",
     "test": "jest"
   },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Joris-van-der-Wel/performr-runner-result-graph.git"
@@ -32,7 +40,6 @@
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
-    "css-loader": "^1.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^5.1.0",
@@ -42,14 +49,13 @@
     "eslint-plugin-react": "^7.10.0",
     "jest": "^23.4.0",
     "less": "^3.7.1",
-    "less-loader": "^4.1.0",
     "loader-utils": "^1.1.0",
     "memory-fs": "^0.4.1",
     "react": "^16.4.1",
     "react-addons-test-utils": "^15.6.2",
-    "style-loader": "^0.18.2",
     "react-dom": "^16.4.1",
     "react-test-renderer": "^16.4.1",
+    "watch": "^1.0.2",
     "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
@@ -74,8 +80,7 @@
       "test"
     ],
     "transform": {
-      "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.(css|less)$": "<rootDir>/less-jest-transform.js"
+      "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest"
     },
     "verbose": true
   }

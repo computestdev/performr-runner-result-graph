@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import PlotHeader from './PlotHeader';
-import style from './style/GraphHeader.less';
 
 export default class GraphHeader extends PureComponent {
     constructor(props) {
@@ -11,19 +10,6 @@ export default class GraphHeader extends PureComponent {
 
         this._plotHeader = null;
         this._setPlotHeader = x => { this._plotHeader = x; };
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     get scrollX() {

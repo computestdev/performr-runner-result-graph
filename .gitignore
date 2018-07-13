@@ -1,9 +1,5 @@
 /node_modules
-/performr-runner-result-graph.iml
-/.idea
 /PRIV
-*.xpi
-/bundle.js
-/bundle.js.map
+/dist
 npm-debug.log
 /coverage

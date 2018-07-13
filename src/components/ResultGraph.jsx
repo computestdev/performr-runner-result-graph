@@ -9,7 +9,6 @@ import EventPlotColumnContainer from '../containers/EventPlotColumn';
 import SelectedEventDetailsContainer from '../containers/SelectedEventDetails';
 import NativeScrollXInput from './NativeScrollXInput';
 import ScreenshotPopupContainer from '../containers/ScreenshotPopup';
-import style from './style/ResultGraph.less';
 
 export default class ResultGraph extends PureComponent {
     constructor(props) {
@@ -27,13 +26,6 @@ export default class ResultGraph extends PureComponent {
         this._lastSeenPlotColumnScrollX = 0;
         this._animationFrameId = null;
         this._window = null;
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
     }
 
     componentDidMount() {
@@ -59,10 +51,6 @@ export default class ResultGraph extends PureComponent {
         this._animationFrameId = null;
 
         this._window = null;
-
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     animationFrame() {

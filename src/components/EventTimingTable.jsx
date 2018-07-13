@@ -3,24 +3,9 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import moment from 'moment';
 
-import style from './style/EventTimingTable.less';
-
 export default class EventTimingTable extends PureComponent {
     constructor(props) {
         super(props);
-    }
-
-    // eslint-disable-next-line camelcase
-    UNSAFE_componentWillMount() {
-        if (style.ref) {
-            style.ref();
-        }
-    }
-
-    componentWillUnmount() {
-        if (style.unref) {
-            style.unref();
-        }
     }
 
     render() {
