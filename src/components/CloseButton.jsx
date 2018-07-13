@@ -9,7 +9,8 @@ export default class CloseButton extends PureComponent {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) {
             style.ref();
         }

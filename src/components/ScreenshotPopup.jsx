@@ -6,7 +6,8 @@ import CloseButton from './CloseButton';
 import style from './style/ScreenshotPopup.scss';
 
 export default class ScreenshotPopup extends PureComponent {
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) {
             style.ref();
         }

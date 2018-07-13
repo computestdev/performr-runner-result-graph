@@ -10,7 +10,8 @@ export default class TransactionPlotItem extends PureComponent {
         this.handlePlotClick = this.handlePlotClick.bind(this);
     }
 
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) {
             style.ref();
         }

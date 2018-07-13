@@ -12,7 +12,8 @@ export default class EventTreeItem extends PureComponent {
         this.handleExpandClick = this.handleExpandClick.bind(this);
     }
 
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) {
             style.ref();
         }

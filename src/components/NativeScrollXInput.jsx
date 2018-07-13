@@ -10,7 +10,8 @@ export default class NativeScrollXInput extends PureComponent {
         this._setScrollerNode = x => { this._scrollerNode = x; };
     }
 
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) {
             style.ref();
         }

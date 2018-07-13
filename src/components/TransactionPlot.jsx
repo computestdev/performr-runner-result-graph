@@ -14,7 +14,8 @@ export default class TransactionPlot extends PureComponent {
         this.calculatePositions();
     }
 
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) {
             style.ref();
         }
@@ -26,7 +27,8 @@ export default class TransactionPlot extends PureComponent {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (!Immutable.is(this.props.config, nextProps.config)) {
             this.calculatePositions();
         }

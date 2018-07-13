@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import style from './style/Screenshot.scss';
 
 export default class Screenshot extends PureComponent {
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) {
             style.ref();
         }

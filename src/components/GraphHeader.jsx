@@ -13,7 +13,8 @@ export default class GraphHeader extends PureComponent {
         this._setPlotHeader = x => { this._plotHeader = x; };
     }
 
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) {
             style.ref();
         }

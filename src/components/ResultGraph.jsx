@@ -29,7 +29,8 @@ export default class ResultGraph extends PureComponent {
         this._window = null;
     }
 
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) {
             style.ref();
         }

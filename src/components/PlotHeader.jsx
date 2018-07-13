@@ -14,7 +14,8 @@ export default class PlotHeader extends PureComponent {
         this._setScrollerNode = x => { this._scrollerNode = x; };
     }
 
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) {
             style.ref();
         }

@@ -62,7 +62,8 @@ export default class PerformrRunnerResultGraph extends Component {
         this._defaultStoreCached = null;
     }
 
-    componentWillMount() {
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
         if (style.ref) { // in case "style-loader/useable" is used
             style.ref();
         }
