@@ -74,7 +74,7 @@ export default class EventMetaDataTable extends PureComponent {
                         {value.map((map, i) => (
                             <li className='headerListItem' key={i}>
                                 <span className="key">{map.get('name') + ': '}</span>
-                                {map.get('value')}
+                                <span className="value">{map.get('value')}</span>
                             </li>
                         ))
                         }
