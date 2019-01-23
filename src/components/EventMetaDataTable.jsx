@@ -67,10 +67,20 @@ export default class EventMetaDataTable extends PureComponent {
             return String(value);
         }
 
-        if ((key === 'requestHeaders' || key === 'responseHeaders') && /^browser:http/.test(eventType)) {
-            return value.map((map, i) => (
-                <div className="line" key={i}>{map.get('name') + ': ' + map.get('value')}</div>
-            ));
+        if (key === 'requestHeaders' || key === 'responseHeaders') {
+            return (
+                <div className='headers'>
+                    <ul className='headerList'>
+                        {value.map((map, i) => (
+                            <li className='headerListItem' key={i}>
+                                <span className="key">{map.get('name') + ': '}</span>
+                                <span className="value">{map.get('value')}</span>
+                            </li>
+                        ))
+                        }
+                    </ul>
+                </div>
+            );
         }
 
         if (value.toJS) { // Immutable.js

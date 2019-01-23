@@ -16,8 +16,19 @@
                     line-height: 1.1rem;
                     padding-bottom: 0.4rem;
 
-                    > .line {
-                        text-indent: 3em hanging;
+                    > div {
+                        > ul {
+                            list-style-type: none;
+                            > li {
+                                > .key {
+                                    font-weight: bold;
+                                }
+                                > .value {
+                                    white-space: pre-wrap;
+                                }
+                            }
+                        }
+
                     }
 
                     > .viewScreenshotButton {
