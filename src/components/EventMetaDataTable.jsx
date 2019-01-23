@@ -67,7 +67,7 @@ export default class EventMetaDataTable extends PureComponent {
             return String(value);
         }
 
-        if ((key === 'requestHeaders' || key === 'responseHeaders')) {
+        if (key === 'requestHeaders' || key === 'responseHeaders') {
             return (
                 <div className='headers'>
                     <ul className='headerList'>
