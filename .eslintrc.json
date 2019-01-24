@@ -3,6 +3,11 @@
         "commonjs": true,
         "es6": true
     },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "globals": {
         "__dirname": false,
         "Buffer": false,

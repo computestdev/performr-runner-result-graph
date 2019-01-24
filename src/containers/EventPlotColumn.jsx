@@ -27,6 +27,14 @@ class EventPlotColumnWrapper extends PureComponent {
             />
         );
     }
+
+    get scrollX() {
+        return this._wrapped.scrollX;
+    }
+
+    set scrollX(value) {
+        this._wrapped.scrollX = value;
+    }
 }
 
 EventPlotColumnWrapper.propTypes = {
@@ -39,15 +47,6 @@ const mapStateToProps = (state, {config}) => ({
     selectedTransaction: config.getMyState(state, ['selectedTransaction'], ''),
 });
 
-const EventPlotColumnContainer = connect(mapStateToProps, null, null, {withRef: true})(EventPlotColumnWrapper);
-
-Object.defineProperty(EventPlotColumnContainer.prototype, 'scrollX', {
-    get() {
-        return this.getWrappedInstance()._wrapped.scrollX;
-    },
-    set(value) {
-        this.getWrappedInstance()._wrapped.scrollX = value;
-    },
-});
+const EventPlotColumnContainer = connect(mapStateToProps, null, null, {forwardRef: true})(EventPlotColumnWrapper);
 
 export default EventPlotColumnContainer;
