@@ -8,6 +8,8 @@ import ResultGraph from './components/ResultGraph';
 import {createInstanceReducer, createRootReducer, stateKey} from './reducers';
 import Config from './Config';
 
+const DEFAULT_PIXELS_PER_MS = 0.5;
+
 // this module is the main export for this package
 
 export {createInstanceReducer, createRootReducer, stateKey};
@@ -63,11 +65,17 @@ export default class PerformrRunnerResultGraph extends Component {
 
     render() {
         const {instanceKey, resultObject, width} = this.props;
+        let {pixelsPerMillisecond} = this.props;
 
         const duration = resultObject.getIn(['timing', 'duration']);
 
-        // Todo: calculate the subtracted width
-        const pixelsPerMillisecond = (width - 375) / duration;
+        if (!pixelsPerMillisecond && width) {
+            // Todo: calculate the subtracted width
+            pixelsPerMillisecond = (width - 375) / duration;
+        }
+        if (!pixelsPerMillisecond || pixelsPerMillisecond < 0) {
+            pixelsPerMillisecond = DEFAULT_PIXELS_PER_MS;
+        }
 
         if (!this.props.store && !this._defaultStoreCached) {
             this._defaultStoreCached = createStore(combineReducers({
@@ -95,14 +103,16 @@ export default class PerformrRunnerResultGraph extends Component {
 
 PerformrRunnerResultGraph.defaultProps = {
     instanceKey: 'default',
+    pixelsPerMillisecond: DEFAULT_PIXELS_PER_MS,
     store: null,
-    width: 900,
+    width: null,
 };
 
 PerformrRunnerResultGraph.propTypes = {
     // The instanceKey us used as a key for Immutable.Map, but also in strict equality checks
     // (e.g. foo.instanceKey === bar.instanceKey)
     instanceKey: PropTypes.any.isRequired,
+    pixelsPerMillisecond: PropTypes.number,
 
     // not an exhaustive check, but it should catch most mistakes.s
     // especially eventMap and transactionMap are useful checks since they make
