@@ -34,7 +34,7 @@ export default class TransactionPlot extends PureComponent {
 
     renderLines() {
         return this._transactionPositions.map((line, i) =>
-            <div className="line" key={i}>{this.renderLine(line)}</div>
+            <div className="line" key={i}>{this.renderLine(line)}</div>,
         );
     }
 
