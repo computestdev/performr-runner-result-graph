@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "immutable": "^3.8.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "prop-types": "^15.7.2",
     "react-immutable-proptypes": "^2.1.0",
     "react-redux": "^7.0.3",
