@@ -1,6 +1,6 @@
 {
   "name": "performr-runner-result-graph",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Display the event breakdown of a performr-runner script run as a pretty graph. Using React & Redux & Less",
   "main": "src/PerformrRunnerResultGraph.jsx",
   "scripts": {
