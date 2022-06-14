@@ -4,7 +4,10 @@ const path = require('path');
 
 module.exports = {
     devServer: {
-        contentBase: './',
+        liveReload: false,
+        static: {
+            directory: __dirname,
+        },
     },
     devtool: 'source-map',
     entry: [
@@ -13,14 +16,9 @@ module.exports = {
     externals: {
         react: 'React',
     },
+    mode: 'production',
     module: {
         rules: [
-            {
-                enforce: 'pre',
-                exclude: /node_modules/,
-                test: /\.jsx?$/,
-                use: ['eslint-loader'],
-            },
             {
                 exclude: /node_modules/,
                 test: /\.jsx?$/,
@@ -39,4 +37,5 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
     },
+    target: 'web',
 };
