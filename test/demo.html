@@ -26,6 +26,8 @@
         <input id="upload" type="file"/>
         <div id="demo-container"></div>
         <script>
+            const reactRoot = ReactDOM.createRoot(document.querySelector('#demo-container'));
+
             const render = resultObject => {
                 const {parseResultObject, createRootReducer, stateKey, default: PerformrRunnerResultGraphComponent} = PerformrRunnerResultGraph;
 
@@ -45,12 +47,7 @@
                     instanceKey,
                 });
 
-                const container = document.querySelector('#demo-container');
-                ReactDOM.unmountComponentAtNode(container);
-                ReactDOM.render(
-                    window.myResultGraph,
-                    container
-                );
+                reactRoot.render(window.myResultGraph);
             };
 
             document.querySelector('#upload').addEventListener('change', e => {
@@ -63,7 +60,6 @@
                 const reader = new FileReader();
                 reader.onload = () => {
                     try {
-                        ReactDOM.unmountComponentAtNode(document.querySelector('#demo-container'));
                         const resultObject = JSON.parse(reader.result);
                         render(resultObject);
                     }
